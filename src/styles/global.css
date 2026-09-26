@@ -1,0 +1,276 @@
+@import './tokens.css';
+
+/* Global Reset & Base Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: #12100d;
+  color: var(--color-warm-ivory);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Atmospheric Desktop Shell */
+.app-viewport-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at 50% 30%, #201b15 0%, #0d0c0a 100%);
+  overflow: hidden;
+}
+
+/* Ambient glow and editorial typography on desktop */
+.desktop-backdrop {
+  display: none;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+@media (min-width: 900px) {
+  .desktop-backdrop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem 6rem;
+    z-index: 1;
+  }
+
+  .desktop-backdrop-left {
+    max-width: 340px;
+  }
+
+  .desktop-backdrop-right {
+    max-width: 320px;
+    text-align: right;
+  }
+
+  .desktop-brand {
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--color-champagne-gold);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .desktop-names {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    line-height: 1;
+    color: var(--color-warm-ivory);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+  }
+
+  .desktop-date {
+    font-size: 0.85rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-soft-gray);
+  }
+
+  .desktop-tagline {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-soft-gray);
+    margin-top: 1.5rem;
+  }
+
+  .desktop-note {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+  }
+}
+
+/* Mobile-First Phone Container */
+.phone-canvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  max-width: 100%;
+  overflow: hidden;
+  background-color: #171613;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+/* Tablet & Desktop: Centered luxury phone presentation */
+@media (min-width: 640px) {
+  .phone-canvas {
+    max-width: 420px;
+    height: min(94dvh, 880px);
+    border-radius: 44px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.7), 0 0 40px rgba(198, 165, 107, 0.08);
+  }
+}
+
+/* Base Glassmorphic Surface */
+.glass-panel {
+  background: var(--glass-card);
+  backdrop-filter: blur(var(--backdrop-blur)) saturate(var(--backdrop-saturate));
+  -webkit-backdrop-filter: blur(var(--backdrop-blur)) saturate(var(--backdrop-saturate));
+  border: 1px solid var(--glass-border-light);
+  border-radius: var(--radius-md);
+}
+
+.glass-panel-dark {
+  background: var(--glass-dark-card);
+  backdrop-filter: blur(var(--backdrop-blur)) saturate(var(--backdrop-saturate));
+  -webkit-backdrop-filter: blur(var(--backdrop-blur)) saturate(var(--backdrop-saturate));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-pill);
+}
+
+/* Typography Utilities */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.text-gold {
+  color: var(--color-champagne-gold);
+}
+
+.text-ivory {
+  color: var(--color-warm-ivory);
+}
+
+.text-muted {
+  color: var(--color-soft-gray);
+}
+
+.tracking-editorial {
+  letter-spacing: 0.22em;
+}
+
+/* Button & Interactive states */
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn-luxury {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: transform var(--duration-fast) var(--ease-spring),
+              background var(--duration-fast) ease,
+              box-shadow var(--duration-fast) ease;
+  min-height: 48px;
+}
+
+.btn-luxury:active {
+  transform: scale(0.96);
+}
+
+.btn-luxury-gold {
+  background: linear-gradient(135deg, #e6c88f 0%, #c6a56b 100%);
+  color: #171613;
+  box-shadow: 0 4px 18px rgba(198, 165, 107, 0.35);
+  font-weight: 600;
+}
+
+.btn-luxury-gold:hover {
+  background: linear-gradient(135deg, #ebd19c 0%, #d1b178 100%);
+}
+
+.btn-luxury-glass {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: var(--color-warm-ivory);
+}
+
+.btn-luxury-glass:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* Scrollbar styling */
+.custom-scroll {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(198, 165, 107, 0.3) transparent;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: rgba(198, 165, 107, 0.3);
+  border-radius: 4px;
+}
+
+/* Animations */
+@keyframes softPulse {
+  0%, 100% { opacity: 0.9; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.02); }
+}
+
+@keyframes delicateFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
