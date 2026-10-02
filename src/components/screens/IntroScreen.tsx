@@ -35,7 +35,7 @@ export const IntroScreen: React.FC = () => {
         alignItems: 'center',
         justifyContent: 'center',
         overflow: 'hidden',
-        backgroundColor: '#12100d',
+        backgroundColor: '#171613',
       }}
     >
       {/* Background with cinematic blur that clears when accepted */}

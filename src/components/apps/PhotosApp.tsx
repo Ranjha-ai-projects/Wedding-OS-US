@@ -255,11 +255,13 @@ export const PhotosApp: React.FC = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             style={{
-              position: 'fixed',
+              position: 'absolute',
               inset: 0,
               zIndex: 100,
-              background: 'rgba(18, 16, 13, 0.96)',
+              background: 'rgba(18, 16, 13, 0.98)',
+              backgroundColor: '#171613',
               backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
@@ -356,10 +358,10 @@ export const PhotosApp: React.FC = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.98 }}
             style={{
-              position: 'fixed',
+              position: 'absolute',
               inset: 0,
               zIndex: 110,
-              backgroundColor: '#0d0c0a',
+              backgroundColor: '#171613',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',

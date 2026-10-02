@@ -35,62 +35,137 @@ const MainOSContent: React.FC = () => {
       {/* Couple OS Notification Center */}
       <NotificationCenter />
 
-      {/* Primary OS Screens */}
-      <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }}>
-        <AnimatePresence mode="wait">
-          {screenState === 'intro' && (
-            <motion.div
-              key="intro-screen"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.4 }}
-              style={{ width: '100%', height: '100%' }}
-            >
-              <IntroScreen />
-            </motion.div>
-          )}
+      {/* Persistent Screen Stage: Never unmounts during navigation */}
+      <div
+        className="couple-os-stage"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          overflow: 'hidden',
+          backgroundColor: '#171613',
+          transform: 'translateZ(0)',
+          WebkitBackfaceVisibility: 'hidden',
+          backfaceVisibility: 'hidden',
+        }}
+      >
+        {/* Layer 1: Home Screen (Persistent Foundation) */}
+        {(screenState === 'home' || screenState === 'lock') && (
+          <motion.div
+            key="home-screen-layer"
+            initial={false}
+            animate={{
+              scale: activeApp ? 0.96 : 1,
+            }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              zIndex: 10,
+              backgroundColor: '#171613',
+              transform: 'translateZ(0)',
+              WebkitBackfaceVisibility: 'hidden',
+              backfaceVisibility: 'hidden',
+            }}
+          >
+            <HomeScreen />
 
+            {/* GPU-accelerated backdrop dimmer (zero filter reallocations) */}
+            <motion.div
+              initial={false}
+              animate={{ opacity: activeApp ? 0.42 : 0 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              style={{
+                position: 'absolute',
+                inset: 0,
+                backgroundColor: '#000000',
+                pointerEvents: activeApp ? 'auto' : 'none',
+                zIndex: 15,
+              }}
+            />
+          </motion.div>
+        )}
+
+        {/* Layer 2: 8 Primary Applications Over Home Screen */}
+        <AnimatePresence mode="sync">
+          {activeApp && (
+            <div
+              key={`active-app-wrapper-${activeApp}`}
+              style={{
+                position: 'absolute',
+                inset: 0,
+                zIndex: 25,
+                transform: 'translateZ(0)',
+              }}
+            >
+              {activeApp === 'invite' && <InviteApp />}
+              {activeApp === 'story' && <StoryApp />}
+              {activeApp === 'photos' && <PhotosApp />}
+              {activeApp === 'events' && <EventsApp />}
+              {activeApp === 'places' && <PlacesApp />}
+              {activeApp === 'music' && <MusicApp />}
+              {activeApp === 'attire' && <AttireApp />}
+              {activeApp === 'rsvp' && <RSVPApp />}
+            </div>
+          )}
+        </AnimatePresence>
+
+        {/* Layer 3: Lock Screen (Top Cover Layer) */}
+        <AnimatePresence>
           {screenState === 'lock' && (
             <motion.div
-              key="lock-screen"
-              initial={{ opacity: 0, scale: 1.02 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, y: -80, filter: 'blur(8px)' }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              style={{ width: '100%', height: '100%' }}
+              key="lock-screen-overlay"
+              initial={false}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{
+                y: '-100%',
+                opacity: 0,
+                transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
+              }}
+              transition={{ type: 'spring', damping: 28, stiffness: 300, mass: 0.8 }}
+              style={{
+                position: 'absolute',
+                inset: 0,
+                zIndex: 40,
+                backgroundColor: '#171613',
+                transform: 'translateZ(0)',
+                WebkitBackfaceVisibility: 'hidden',
+                backfaceVisibility: 'hidden',
+              }}
             >
               <LockScreen />
             </motion.div>
           )}
-
-          {screenState === 'home' && (
-            <motion.div
-              key="home-screen"
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{
-                opacity: 1,
-                scale: activeApp ? 0.95 : 1,
-                filter: activeApp ? 'blur(4px) brightness(0.7)' : 'blur(0px) brightness(1)',
-              }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              style={{ width: '100%', height: '100%' }}
-            >
-              <HomeScreen />
-            </motion.div>
-          )}
         </AnimatePresence>
 
-        {/* 8 Primary Applications Over Home Screen */}
+        {/* Layer 4: Intro Screen (First-Run / Replay Overlay) */}
         <AnimatePresence>
-          {activeApp === 'invite' && <InviteApp key="app-invite" />}
-          {activeApp === 'story' && <StoryApp key="app-story" />}
-          {activeApp === 'photos' && <PhotosApp key="app-photos" />}
-          {activeApp === 'events' && <EventsApp key="app-events" />}
-          {activeApp === 'places' && <PlacesApp key="app-places" />}
-          {activeApp === 'music' && <MusicApp key="app-music" />}
-          {activeApp === 'attire' && <AttireApp key="app-attire" />}
-          {activeApp === 'rsvp' && <RSVPApp key="app-rsvp" />}
+          {screenState === 'intro' && (
+            <motion.div
+              key="intro-screen-overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{
+                opacity: 0,
+                transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
+              }}
+              transition={{ duration: 0.4 }}
+              style={{
+                position: 'absolute',
+                inset: 0,
+                zIndex: 50,
+                backgroundColor: '#171613',
+                transform: 'translateZ(0)',
+                WebkitBackfaceVisibility: 'hidden',
+                backfaceVisibility: 'hidden',
+              }}
+            >
+              <IntroScreen />
+            </motion.div>
+          )}
         </AnimatePresence>
       </div>
 

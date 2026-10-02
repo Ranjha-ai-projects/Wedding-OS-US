@@ -39,9 +39,16 @@ export const LockScreen: React.FC = () => {
   const diffDays = Math.max(1, Math.ceil(diffTime / (1000 * 60 * 60 * 24)));
   const displayDays = isNaN(diffDays) ? 32 : (diffDays > 0 ? diffDays : 32);
 
+  const isUnlocking = React.useRef(false);
+  const handleUnlock = () => {
+    if (isUnlocking.current) return;
+    isUnlocking.current = true;
+    unlockPhone();
+  };
+
   const handleDragEnd = (_: unknown, info: { offset: { y: number }; velocity: { y: number } }) => {
     if (info.offset.y < -75 || info.velocity.y < -300) {
-      unlockPhone();
+      handleUnlock();
     }
   };
 
@@ -55,6 +62,10 @@ export const LockScreen: React.FC = () => {
         flexDirection: 'column',
         justifyContent: 'space-between',
         overflow: 'hidden',
+        backgroundColor: '#171613',
+        transform: 'translateZ(0)',
+        WebkitBackfaceVisibility: 'hidden',
+        backfaceVisibility: 'hidden',
         y: dragY,
         opacity,
         scale,
@@ -171,7 +182,7 @@ export const LockScreen: React.FC = () => {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.25, duration: 0.5 }}
-          onClick={unlockPhone}
+          onClick={handleUnlock}
           style={{
             cursor: 'pointer',
             padding: '14px 16px',
@@ -235,7 +246,7 @@ export const LockScreen: React.FC = () => {
 
       {/* Bottom: Swipe up gesture indicator & Tap fallback */}
       <div
-        onClick={unlockPhone}
+        onClick={handleUnlock}
         style={{
           position: 'relative',
           zIndex: 10,

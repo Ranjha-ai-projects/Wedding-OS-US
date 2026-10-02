@@ -298,18 +298,26 @@ export const OSProvider: React.FC<{ children: React.ReactNode }> = ({ children }
     setScreenState('lock');
   };
 
-  const unlockPhone = () => {
+  const lastAppNavTime = useRef<number>(0);
+
+  const unlockPhone = useCallback(() => {
     setScreenState('home');
     handleUnlockCompleted();
-  };
+  }, [handleUnlockCompleted]);
 
-  const lockPhone = () => {
+  const lockPhone = useCallback(() => {
     setActiveApp(null);
     setIsNotificationCenterOpen(false);
     setScreenState('lock');
-  };
+  }, []);
 
-  const openApp = (appId: AppId) => {
+  const openApp = useCallback((appId: AppId) => {
+    const now = Date.now();
+    if (activeAppRef.current === appId && now - lastAppNavTime.current < 450) {
+      return;
+    }
+    lastAppNavTime.current = now;
+
     setActiveApp(appId);
     setOpenedApps((prev) => new Set(prev).add(appId));
 
@@ -324,11 +332,16 @@ export const OSProvider: React.FC<{ children: React.ReactNode }> = ({ children }
       dismissNotification();
     }
     setIsNotificationCenterOpen(false);
-  };
+  }, [activeNotification]);
 
-  const closeApp = () => {
+  const closeApp = useCallback(() => {
+    const now = Date.now();
+    if (activeAppRef.current === null && now - lastAppNavTime.current < 350) {
+      return;
+    }
+    lastAppNavTime.current = now;
     setActiveApp(null);
-  };
+  }, []);
 
   const dismissNotification = () => {
     lastBannerDismissedAt.current = Date.now();

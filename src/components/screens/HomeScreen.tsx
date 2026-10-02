@@ -56,6 +56,9 @@ export const HomeScreen: React.FC = () => {
         flexDirection: 'column',
         overflow: 'hidden',
         backgroundColor: '#171613',
+        transform: 'translateZ(0)',
+        WebkitBackfaceVisibility: 'hidden',
+        backfaceVisibility: 'hidden',
       }}
     >
       {/* Background Couple Photography with Dark Warm Editorial Overlay */}

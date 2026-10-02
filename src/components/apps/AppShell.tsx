@@ -23,9 +23,9 @@ export const AppShell: React.FC<AppShellProps> = ({
 
   return (
     <motion.div
-      initial={{ y: '100%', opacity: 0.95 }}
-      animate={{ y: 0, opacity: 1 }}
-      exit={{ y: '100%', opacity: 0.95 }}
+      initial={{ y: '100%' }}
+      animate={{ y: 0 }}
+      exit={{ y: '100%' }}
       transition={{ type: 'spring', damping: 28, stiffness: 300, mass: 0.8 }}
       drag="x"
       dragConstraints={{ left: 0, right: 0 }}
@@ -39,11 +39,15 @@ export const AppShell: React.FC<AppShellProps> = ({
       style={{
         position: 'absolute',
         inset: 0,
-        zIndex: 60,
+        zIndex: 25,
         backgroundColor: bgColor,
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
+        transform: 'translateZ(0)',
+        WebkitBackfaceVisibility: 'hidden',
+        backfaceVisibility: 'hidden',
+        willChange: 'transform',
       }}
     >
       {/* Phone Status Bar */}
