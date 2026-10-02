@@ -1,21 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Heart } from 'lucide-react';
 import { useOS } from '../../context/OSContext';
 import { weddingConfig } from '../../config/weddingConfig';
 
 export const IntroScreen: React.FC = () => {
   const { acceptInvite, declineInvite } = useOS();
-  const [showCard, setShowCard] = useState(false);
   const [isAccepting, setIsAccepting] = useState(false);
-
-  useEffect(() => {
-    // Deliberate cinematic pause before revealing the share invitation card
-    const timer = setTimeout(() => {
-      setShowCard(true);
-    }, 600);
-    return () => clearTimeout(timer);
-  }, []);
 
   const handleAccept = () => {
     setIsAccepting(true);
@@ -38,11 +29,11 @@ export const IntroScreen: React.FC = () => {
         backgroundColor: '#171613',
       }}
     >
-      {/* Background with cinematic blur that clears when accepted */}
+      {/* Background with stable cinematic blur */}
       <motion.div
         animate={{
-          filter: isAccepting ? 'blur(0px) brightness(0.95)' : 'blur(16px) brightness(0.45)',
           scale: isAccepting ? 1.05 : 1.12,
+          opacity: isAccepting ? 0.9 : 0.7,
         }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         style={{
@@ -51,7 +42,12 @@ export const IntroScreen: React.FC = () => {
           backgroundImage: `url(${weddingConfig.heroPhoto})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
+          backgroundColor: '#171613',
+          filter: 'blur(14px)',
           transformOrigin: 'center center',
+          transform: 'translateZ(0)',
+          WebkitBackfaceVisibility: 'hidden',
+          backfaceVisibility: 'hidden',
         }}
       />
 
@@ -65,20 +61,18 @@ export const IntroScreen: React.FC = () => {
         }}
       />
 
-      {/* Share Invitation Card */}
-      <AnimatePresence>
-        {showCard && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.92, y: 30 }}
-            animate={{
-              opacity: isAccepting ? 0 : 1,
-              scale: isAccepting ? 0.94 : 1,
-              y: isAccepting ? -20 : 0,
-            }}
-            transition={{
-              duration: isAccepting ? 0.45 : 0.6,
-              ease: [0.16, 1, 0.3, 1],
-            }}
+      {/* Share Invitation Card: Rendered immediately on first paint */}
+      <motion.div
+        initial={false}
+        animate={{
+          opacity: isAccepting ? 0 : 1,
+          scale: isAccepting ? 0.94 : 1,
+          y: isAccepting ? -20 : 0,
+        }}
+        transition={{
+          duration: isAccepting ? 0.45 : 0.4,
+          ease: [0.16, 1, 0.3, 1],
+        }}
             style={{
               position: 'relative',
               zIndex: 20,
@@ -229,8 +223,6 @@ export const IntroScreen: React.FC = () => {
               </button>
             </div>
           </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-};
+        </div>
+      );
+    };

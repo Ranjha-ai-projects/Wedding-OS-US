@@ -51,43 +51,41 @@ const MainOSContent: React.FC = () => {
         }}
       >
         {/* Layer 1: Home Screen (Persistent Foundation) */}
-        {(screenState === 'home' || screenState === 'lock') && (
+        <motion.div
+          key="home-screen-layer"
+          initial={false}
+          animate={{
+            scale: activeApp ? 0.96 : 1,
+          }}
+          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            zIndex: 10,
+            backgroundColor: '#171613',
+            transform: 'translateZ(0)',
+            WebkitBackfaceVisibility: 'hidden',
+            backfaceVisibility: 'hidden',
+          }}
+        >
+          <HomeScreen />
+
+          {/* GPU-accelerated backdrop dimmer (zero filter reallocations) */}
           <motion.div
-            key="home-screen-layer"
             initial={false}
-            animate={{
-              scale: activeApp ? 0.96 : 1,
-            }}
+            animate={{ opacity: activeApp ? 0.42 : 0 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             style={{
               position: 'absolute',
               inset: 0,
-              width: '100%',
-              height: '100%',
-              zIndex: 10,
-              backgroundColor: '#171613',
-              transform: 'translateZ(0)',
-              WebkitBackfaceVisibility: 'hidden',
-              backfaceVisibility: 'hidden',
+              backgroundColor: '#000000',
+              pointerEvents: activeApp ? 'auto' : 'none',
+              zIndex: 15,
             }}
-          >
-            <HomeScreen />
-
-            {/* GPU-accelerated backdrop dimmer (zero filter reallocations) */}
-            <motion.div
-              initial={false}
-              animate={{ opacity: activeApp ? 0.42 : 0 }}
-              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              style={{
-                position: 'absolute',
-                inset: 0,
-                backgroundColor: '#000000',
-                pointerEvents: activeApp ? 'auto' : 'none',
-                zIndex: 15,
-              }}
-            />
-          </motion.div>
-        )}
+          />
+        </motion.div>
 
         {/* Layer 2: 8 Primary Applications Over Home Screen */}
         <AnimatePresence mode="sync">
@@ -146,7 +144,7 @@ const MainOSContent: React.FC = () => {
           {screenState === 'intro' && (
             <motion.div
               key="intro-screen-overlay"
-              initial={{ opacity: 0 }}
+              initial={false}
               animate={{ opacity: 1 }}
               exit={{
                 opacity: 0,

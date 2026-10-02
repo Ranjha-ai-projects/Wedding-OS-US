@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Wifi, BatteryMedium, Signal } from 'lucide-react';
-import { LivePill } from './LivePill';
 import { useOS } from '../../context/OSContext';
 
 interface StatusBarProps {
@@ -64,10 +63,8 @@ export const StatusBar: React.FC<StatusBarProps> = ({ variant = 'light' }) => {
         <span style={{ fontFamily: 'var(--font-body)', fontWeight: 600 }}>{time}</span>
       </button>
 
-      {/* Couple OS Live Activity Pill */}
-      <div>
-        <LivePill />
-      </div>
+      {/* Clean center space without redundant faux notch */}
+      <div style={{ flex: 1 }} />
 
       {/* Right System Icons */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>

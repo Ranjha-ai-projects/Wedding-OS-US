@@ -179,9 +179,8 @@ export const LockScreen: React.FC = () => {
         }}
       >
         <motion.div
-          initial={{ y: 20, opacity: 0 }}
+          initial={false}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.25, duration: 0.5 }}
           onClick={handleUnlock}
           style={{
             cursor: 'pointer',
