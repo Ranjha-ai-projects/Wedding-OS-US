@@ -19,14 +19,19 @@ export const AppShell: React.FC<AppShellProps> = ({
   headerRight,
   bgColor = '#171613',
 }) => {
-  const { closeApp } = useOS();
+  const { closeApp, performanceProfile } = useOS();
+  const isSafe = performanceProfile === 'safe';
 
   return (
     <motion.div
-      initial={{ y: '100%' }}
-      animate={{ y: 0 }}
-      exit={{ y: '100%' }}
-      transition={{ type: 'spring', damping: 28, stiffness: 300, mass: 0.8 }}
+      initial={isSafe ? { y: 8, opacity: 1 } : { y: '100%' }}
+      animate={{ y: 0, opacity: 1 }}
+      exit={isSafe ? { y: 8, opacity: 1 } : { y: '100%' }}
+      transition={
+        isSafe
+          ? { duration: 0.24, ease: [0.16, 1, 0.3, 1] }
+          : { type: 'spring', damping: 28, stiffness: 300, mass: 0.8 }
+      }
       drag="x"
       dragConstraints={{ left: 0, right: 0 }}
       dragElastic={{ left: 0, right: 0.25 }}
@@ -65,9 +70,9 @@ export const AppShell: React.FC<AppShellProps> = ({
           justifyContent: 'space-between',
           padding: '0.5rem 1.25rem 0.65rem 1.25rem',
           borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-          background: 'rgba(23, 22, 19, 0.85)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
+          background: isSafe ? 'rgba(23, 22, 19, 0.98)' : 'rgba(23, 22, 19, 0.85)',
+          backdropFilter: isSafe ? 'none' : 'blur(20px)',
+          WebkitBackdropFilter: isSafe ? 'none' : 'blur(20px)',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>

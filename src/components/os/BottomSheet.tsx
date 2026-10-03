@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useOS } from '../../context/OSContext';
 
 interface BottomSheetProps {
   isOpen: boolean;
@@ -9,6 +10,9 @@ interface BottomSheetProps {
 }
 
 export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, title, children }) => {
+  const { performanceProfile } = useOS();
+  const isSafe = performanceProfile === 'safe';
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -23,9 +27,9 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, title
               position: 'fixed',
               inset: 0,
               zIndex: 130,
-              backgroundColor: 'rgba(0, 0, 0, 0.65)',
-              backdropFilter: 'blur(8px)',
-              WebkitBackdropFilter: 'blur(8px)',
+              backgroundColor: isSafe ? 'rgba(0, 0, 0, 0.75)' : 'rgba(0, 0, 0, 0.65)',
+              backdropFilter: isSafe ? 'none' : 'blur(8px)',
+              WebkitBackdropFilter: isSafe ? 'none' : 'blur(8px)',
             }}
           />
 
@@ -49,9 +53,9 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, title
               left: 0,
               right: 0,
               zIndex: 140,
-              backgroundColor: 'rgba(23, 22, 19, 0.95)',
-              backdropFilter: 'blur(25px)',
-              WebkitBackdropFilter: 'blur(25px)',
+              backgroundColor: isSafe ? '#171613' : 'rgba(23, 22, 19, 0.95)',
+              backdropFilter: isSafe ? 'none' : 'blur(25px)',
+              WebkitBackdropFilter: isSafe ? 'none' : 'blur(25px)',
               borderTop: '1px solid rgba(255, 255, 255, 0.16)',
               borderTopLeftRadius: '28px',
               borderTopRightRadius: '28px',

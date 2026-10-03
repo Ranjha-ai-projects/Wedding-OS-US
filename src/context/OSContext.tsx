@@ -1,5 +1,10 @@
 import React, { createContext, useContext, useState, useEffect, useRef, useCallback } from 'react';
 import { weddingConfig } from '../config/weddingConfig';
+import {
+  type PerformanceProfile,
+  getInitialPerformanceProfile,
+  transitionMonitor,
+} from '../utils/performanceProfile';
 
 export type ScreenState = 'intro' | 'lock' | 'home';
 
@@ -47,8 +52,10 @@ interface OSContextType {
   rsvpData: RSVPData;
   openedAppsCount: number;
   livePillExpanded: boolean;
+  performanceProfile: PerformanceProfile;
   
   // Actions
+  setPerformanceProfile: (profile: PerformanceProfile) => void;
   acceptInvite: () => void;
   declineInvite: () => void;
   unlockPhone: () => void;
@@ -76,6 +83,25 @@ export const SESSION_MESSAGE_INTRO_KEY = 'coupleOS.notification.messageIntro.sho
 const SESSION_RSVP_REMINDER_KEY = 'coupleOS.notification.rsvpReminder.shown';
 
 export const OSProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [performanceProfile, setPerformanceProfileState] = useState<PerformanceProfile>(() => {
+    return getInitialPerformanceProfile();
+  });
+
+  const setPerformanceProfile = useCallback((profile: PerformanceProfile) => {
+    setPerformanceProfileState(profile);
+    try {
+      sessionStorage.setItem('coupleOS.performanceProfile', profile);
+      document.documentElement.setAttribute('data-perf', profile);
+    } catch {}
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-perf', performanceProfile);
+    transitionMonitor.init(() => {
+      setPerformanceProfile('safe');
+    });
+  }, [performanceProfile, setPerformanceProfile]);
+
   const [hasSeenIntro, setHasSeenIntro] = useState<boolean>(() => {
     return localStorage.getItem(SEEN_INTRO_KEY) === 'true';
   });
@@ -301,11 +327,13 @@ export const OSProvider: React.FC<{ children: React.ReactNode }> = ({ children }
   const lastAppNavTime = useRef<number>(0);
 
   const unlockPhone = useCallback(() => {
+    transitionMonitor.startTransitionCheck();
     setScreenState('home');
     handleUnlockCompleted();
   }, [handleUnlockCompleted]);
 
   const lockPhone = useCallback(() => {
+    transitionMonitor.startTransitionCheck();
     setActiveApp(null);
     setIsNotificationCenterOpen(false);
     setScreenState('lock');
@@ -317,6 +345,7 @@ export const OSProvider: React.FC<{ children: React.ReactNode }> = ({ children }
       return;
     }
     lastAppNavTime.current = now;
+    transitionMonitor.startTransitionCheck();
 
     setActiveApp(appId);
     setOpenedApps((prev) => new Set(prev).add(appId));
@@ -340,6 +369,7 @@ export const OSProvider: React.FC<{ children: React.ReactNode }> = ({ children }
       return;
     }
     lastAppNavTime.current = now;
+    transitionMonitor.startTransitionCheck();
     setActiveApp(null);
   }, []);
 
@@ -400,6 +430,8 @@ export const OSProvider: React.FC<{ children: React.ReactNode }> = ({ children }
         rsvpData,
         openedAppsCount: openedApps.size,
         livePillExpanded,
+        performanceProfile,
+        setPerformanceProfile,
         acceptInvite,
         declineInvite,
         unlockPhone,

@@ -4,6 +4,7 @@ import { OSProvider, useOS } from './context/OSContext';
 import { AudioProvider } from './context/AudioContext';
 import { weddingConfig } from './config/weddingConfig';
 import { DesktopWrapper } from './components/os/DesktopWrapper';
+import { PersistentBackground } from './components/os/PersistentBackground';
 import { NotificationBanner } from './components/os/NotificationBanner';
 import { NotificationCenter } from './components/os/NotificationCenter';
 import { BottomNavigation } from './components/os/BottomNavigation';
@@ -21,7 +22,8 @@ import { RSVPApp } from './components/apps/RSVPApp';
 import './styles/global.css';
 
 const MainOSContent: React.FC = () => {
-  const { screenState, activeApp } = useOS();
+  const { screenState, activeApp, performanceProfile } = useOS();
+  const isSafe = performanceProfile === 'safe';
 
   useEffect(() => {
     document.title = `${weddingConfig.couple.brideName} & ${weddingConfig.couple.groomName} — Couple OS`;
@@ -29,13 +31,10 @@ const MainOSContent: React.FC = () => {
 
   return (
     <DesktopWrapper>
-      {/* Contextual Notification Drop */}
-      <NotificationBanner />
+      {/* Root Layer 1: Persistent Background (Never unmounts or recreates during app navigation) */}
+      <PersistentBackground isSafe={isSafe} />
 
-      {/* Couple OS Notification Center */}
-      <NotificationCenter />
-
-      {/* Persistent Screen Stage: Never unmounts during navigation */}
+      {/* Root Layer 2: Screen Stage */}
       <div
         className="couple-os-stage"
         style={{
@@ -44,10 +43,11 @@ const MainOSContent: React.FC = () => {
           width: '100%',
           height: '100%',
           overflow: 'hidden',
-          backgroundColor: '#171613',
+          backgroundColor: 'transparent',
           transform: 'translateZ(0)',
           WebkitBackfaceVisibility: 'hidden',
           backfaceVisibility: 'hidden',
+          zIndex: 10,
         }}
       >
         {/* Layer 1: Home Screen (Persistent Foundation) */}
@@ -55,16 +55,15 @@ const MainOSContent: React.FC = () => {
           key="home-screen-layer"
           initial={false}
           animate={{
-            scale: activeApp ? 0.96 : 1,
+            scale: activeApp ? (isSafe ? 0.99 : 0.96) : 1,
           }}
-          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: isSafe ? 0.28 : 0.35, ease: [0.16, 1, 0.3, 1] }}
           style={{
             position: 'absolute',
             inset: 0,
             width: '100%',
             height: '100%',
             zIndex: 10,
-            backgroundColor: '#171613',
             transform: 'translateZ(0)',
             WebkitBackfaceVisibility: 'hidden',
             backfaceVisibility: 'hidden',
@@ -72,11 +71,11 @@ const MainOSContent: React.FC = () => {
         >
           <HomeScreen />
 
-          {/* GPU-accelerated backdrop dimmer (zero filter reallocations) */}
+          {/* GPU-accelerated backdrop dimmer */}
           <motion.div
             initial={false}
-            animate={{ opacity: activeApp ? 0.42 : 0 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            animate={{ opacity: activeApp ? (isSafe ? 0.48 : 0.42) : 0 }}
+            transition={{ duration: isSafe ? 0.25 : 0.35, ease: [0.16, 1, 0.3, 1] }}
             style={{
               position: 'absolute',
               inset: 0,
@@ -120,8 +119,8 @@ const MainOSContent: React.FC = () => {
               animate={{ y: 0, opacity: 1 }}
               exit={{
                 y: '-100%',
-                opacity: 0,
-                transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
+                opacity: isSafe ? 1 : 0,
+                transition: { duration: isSafe ? 0.38 : 0.45, ease: [0.16, 1, 0.3, 1] },
               }}
               transition={{ type: 'spring', damping: 28, stiffness: 300, mass: 0.8 }}
               style={{
@@ -167,8 +166,25 @@ const MainOSContent: React.FC = () => {
         </AnimatePresence>
       </div>
 
-      {/* System Home Indicator & Persistent Mini Audio Dock */}
-      <BottomNavigation />
+      {/* Root Layer 3: System Overlay Layer */}
+      <div
+        className="system-overlay-layer"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          pointerEvents: 'none',
+          zIndex: 80,
+        }}
+      >
+        {/* Contextual Notification Drop */}
+        <NotificationBanner />
+
+        {/* Couple OS Notification Center */}
+        <NotificationCenter />
+
+        {/* System Home Indicator & Persistent Mini Audio Dock */}
+        <BottomNavigation />
+      </div>
     </DesktopWrapper>
   );
 };

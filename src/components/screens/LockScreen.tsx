@@ -6,14 +6,15 @@ import { useOS } from '../../context/OSContext';
 import { weddingConfig } from '../../config/weddingConfig';
 
 export const LockScreen: React.FC = () => {
-  const { unlockPhone } = useOS();
+  const { unlockPhone, performanceProfile } = useOS();
+  const isSafe = performanceProfile === 'safe';
   const [time, setTime] = useState('9:41');
   const [dateStr, setDateStr] = useState('Wednesday, September 23');
 
   // Motion value for upward swipe gesture
   const dragY = useMotionValue(0);
-  const opacity = useTransform(dragY, [-180, 0], [0.2, 1]);
-  const scale = useTransform(dragY, [-180, 0], [0.95, 1]);
+  const opacity = useTransform(dragY, [-180, 0], [isSafe ? 1 : 0.2, 1]);
+  const scale = useTransform(dragY, [-180, 0], [isSafe ? 1 : 0.95, 1]);
 
   useEffect(() => {
     const updateClock = () => {
@@ -84,7 +85,7 @@ export const LockScreen: React.FC = () => {
           backgroundImage: `url(${weddingConfig.lockPhoto})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center 30%',
-          transform: 'scale(1.02)',
+          transform: isSafe ? 'none' : 'scale(1.02)',
         }}
       />
 

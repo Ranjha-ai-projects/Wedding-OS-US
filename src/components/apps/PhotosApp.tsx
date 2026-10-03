@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, X, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import { AppShell } from './AppShell';
+import { useOS } from '../../context/OSContext';
 import { weddingConfig, type PhotoItem } from '../../config/weddingConfig';
 import { getMergedPhotos } from '../../utils/assetLoader';
 
 export const PhotosApp: React.FC = () => {
+  const { performanceProfile } = useOS();
+  const isSafe = performanceProfile === 'safe';
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [storyIndex, setStoryIndex] = useState<number | null>(null);
   const [activePhoto, setActivePhoto] = useState<PhotoItem | null>(null);
@@ -258,10 +261,9 @@ export const PhotosApp: React.FC = () => {
               position: 'absolute',
               inset: 0,
               zIndex: 100,
-              background: 'rgba(18, 16, 13, 0.98)',
               backgroundColor: '#171613',
-              backdropFilter: 'blur(20px)',
-              WebkitBackdropFilter: 'blur(20px)',
+              backdropFilter: isSafe ? 'none' : 'blur(20px)',
+              WebkitBackdropFilter: isSafe ? 'none' : 'blur(20px)',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',

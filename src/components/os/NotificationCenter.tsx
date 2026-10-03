@@ -5,7 +5,14 @@ import { useOS, type AppId } from '../../context/OSContext';
 import { weddingConfig } from '../../config/weddingConfig';
 
 export const NotificationCenter: React.FC = () => {
-  const { isNotificationCenterOpen, closeNotificationCenter, notificationHistory, openApp } = useOS();
+  const {
+    isNotificationCenterOpen,
+    closeNotificationCenter,
+    notificationHistory,
+    openApp,
+    performanceProfile,
+  } = useOS();
+  const isSafe = performanceProfile === 'safe';
 
   // Wedding countdown
   const weddingDate = new Date(weddingConfig.couple.weddingDate);
@@ -30,17 +37,17 @@ export const NotificationCenter: React.FC = () => {
     <AnimatePresence>
       {isNotificationCenterOpen && (
         <motion.div
-          initial={{ y: '-100%', opacity: 0.8 }}
+          initial={{ y: '-100%', opacity: isSafe ? 1 : 0.8 }}
           animate={{ y: 0, opacity: 1 }}
-          exit={{ y: '-100%', opacity: 0.8 }}
+          exit={{ y: '-100%', opacity: isSafe ? 1 : 0.8 }}
           transition={{ type: 'spring', damping: 28, stiffness: 300, mass: 0.8 }}
           style={{
             position: 'absolute',
             inset: 0,
             zIndex: 150,
-            backgroundColor: 'rgba(18, 16, 13, 0.94)',
-            backdropFilter: 'blur(30px) saturate(130%)',
-            WebkitBackdropFilter: 'blur(30px) saturate(130%)',
+            backgroundColor: isSafe ? 'rgba(18, 16, 13, 0.98)' : 'rgba(18, 16, 13, 0.94)',
+            backdropFilter: isSafe ? 'none' : 'blur(30px) saturate(130%)',
+            WebkitBackdropFilter: isSafe ? 'none' : 'blur(30px) saturate(130%)',
             display: 'flex',
             flexDirection: 'column',
             paddingTop: 'max(1.5rem, env(safe-area-inset-top))',

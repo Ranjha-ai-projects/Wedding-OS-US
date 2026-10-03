@@ -76,3 +76,8 @@
   --sat: env(safe-area-inset-top, 0px);
   --sab: env(safe-area-inset-bottom, 0px);
 }
+
+/* Safe Rendering Profile Override */
+[data-perf="safe"] {
+  --backdrop-blur: 10px;
+}

@@ -36,7 +36,8 @@ const APPS: AppItem[] = [
 ];
 
 export const HomeScreen: React.FC = () => {
-  const { openApp, lockPhone, rsvpData, badges, openNotificationCenter } = useOS();
+  const { openApp, lockPhone, rsvpData, badges, openNotificationCenter, performanceProfile } = useOS();
+  const isSafe = performanceProfile === 'safe';
   const { isPlaying } = useAudio();
 
   // Calculate remaining days
@@ -69,7 +70,7 @@ export const HomeScreen: React.FC = () => {
           backgroundImage: `url(${weddingConfig.heroPhoto})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center 25%',
-          transform: 'scale(1.02)',
+          transform: isSafe ? 'none' : 'scale(1.02)',
         }}
       />
 
@@ -224,9 +225,9 @@ export const HomeScreen: React.FC = () => {
             marginBottom: '1.5rem',
             padding: '1.4rem 1.6rem',
             borderRadius: '26px',
-            background: 'rgba(26, 23, 19, 0.58)',
-            backdropFilter: 'blur(20px) saturate(125%)',
-            WebkitBackdropFilter: 'blur(20px) saturate(125%)',
+            background: isSafe ? 'rgba(26, 23, 19, 0.88)' : 'rgba(26, 23, 19, 0.58)',
+            backdropFilter: isSafe ? 'none' : 'blur(20px) saturate(125%)',
+            WebkitBackdropFilter: isSafe ? 'none' : 'blur(20px) saturate(125%)',
             border: '1px solid rgba(255, 255, 255, 0.16)',
             boxShadow: '0 16px 40px rgba(0, 0, 0, 0.35)',
             display: 'flex',

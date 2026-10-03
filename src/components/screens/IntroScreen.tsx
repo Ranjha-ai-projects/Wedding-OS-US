@@ -5,7 +5,8 @@ import { useOS } from '../../context/OSContext';
 import { weddingConfig } from '../../config/weddingConfig';
 
 export const IntroScreen: React.FC = () => {
-  const { acceptInvite, declineInvite } = useOS();
+  const { acceptInvite, declineInvite, performanceProfile } = useOS();
+  const isSafe = performanceProfile === 'safe';
   const [isAccepting, setIsAccepting] = useState(false);
 
   const handleAccept = () => {
@@ -32,7 +33,7 @@ export const IntroScreen: React.FC = () => {
       {/* Background with stable cinematic blur */}
       <motion.div
         animate={{
-          scale: isAccepting ? 1.05 : 1.12,
+          scale: isSafe ? 1 : (isAccepting ? 1.05 : 1.12),
           opacity: isAccepting ? 0.9 : 0.7,
         }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -43,7 +44,7 @@ export const IntroScreen: React.FC = () => {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundColor: '#171613',
-          filter: 'blur(14px)',
+          filter: isSafe ? 'none' : 'blur(14px)',
           transformOrigin: 'center center',
           transform: 'translateZ(0)',
           WebkitBackfaceVisibility: 'hidden',
@@ -80,9 +81,9 @@ export const IntroScreen: React.FC = () => {
               maxWidth: '360px',
               padding: '2.4rem 1.8rem',
               borderRadius: '32px',
-              background: 'rgba(26, 23, 19, 0.78)',
-              backdropFilter: 'blur(28px) saturate(130%)',
-              WebkitBackdropFilter: 'blur(28px) saturate(130%)',
+              background: isSafe ? 'rgba(26, 23, 19, 0.92)' : 'rgba(26, 23, 19, 0.78)',
+              backdropFilter: isSafe ? 'none' : 'blur(28px) saturate(130%)',
+              WebkitBackdropFilter: isSafe ? 'none' : 'blur(28px) saturate(130%)',
               border: '1px solid rgba(255, 255, 255, 0.16)',
               boxShadow: '0 25px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(198, 165, 107, 0.12)',
               textAlign: 'center',
