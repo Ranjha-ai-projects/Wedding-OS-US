@@ -50,12 +50,12 @@ export const BottomNavigation: React.FC = () => {
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 padding: '8px 14px',
-                background: 'rgba(26, 23, 19, 0.85)',
+                background: 'rgba(242, 234, 223, 0.94)',
                 backdropFilter: 'blur(16px)',
                 WebkitBackdropFilter: 'blur(16px)',
-                border: '1px solid rgba(198, 165, 107, 0.3)',
-                borderRadius: '16px',
-                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.35)',
+                border: '1px solid var(--border-gold)',
+                borderRadius: '18px',
+                boxShadow: 'var(--shadow-card)',
                 cursor: 'pointer',
               }}
             >
@@ -65,11 +65,12 @@ export const BottomNavigation: React.FC = () => {
                     width: '30px',
                     height: '30px',
                     borderRadius: '8px',
-                    background: 'rgba(198, 165, 107, 0.2)',
+                    background: 'rgba(248, 243, 234, 0.9)',
+                    border: '1px solid var(--border-gold)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: 'var(--color-champagne-gold)',
+                    color: 'var(--sage)',
                     flexShrink: 0,
                   }}
                 >
@@ -81,7 +82,7 @@ export const BottomNavigation: React.FC = () => {
                       margin: 0,
                       fontSize: '0.78rem',
                       fontWeight: 600,
-                      color: 'var(--color-warm-ivory)',
+                      color: 'var(--text-primary)',
                       whiteSpace: 'nowrap',
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
@@ -93,7 +94,7 @@ export const BottomNavigation: React.FC = () => {
                     style={{
                       margin: 0,
                       fontSize: '0.68rem',
-                      color: 'var(--color-champagne-gold)',
+                      color: 'var(--gold)',
                       whiteSpace: 'nowrap',
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
@@ -116,17 +117,19 @@ export const BottomNavigation: React.FC = () => {
                   width: '32px',
                   height: '32px',
                   borderRadius: '50%',
-                  background: 'var(--color-champagne-gold)',
-                  color: '#171613',
+                  background: 'var(--text-primary)',
+                  color: 'var(--bg-primary)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   marginLeft: '8px',
                   flexShrink: 0,
-                  boxShadow: '0 2px 8px rgba(198, 165, 107, 0.4)',
+                  border: 'none',
+                  boxShadow: '0 2px 8px rgba(30, 26, 23, 0.2)',
+                  cursor: 'pointer',
                 }}
               >
-                {isPlaying ? <Pause size={14} fill="#171613" /> : <Play size={14} fill="#171613" style={{ marginLeft: '1px' }} />}
+                {isPlaying ? <Pause size={14} fill="var(--bg-primary)" /> : <Play size={14} fill="var(--bg-primary)" style={{ marginLeft: '1px' }} />}
               </button>
             </div>
           </motion.div>
@@ -153,8 +156,8 @@ export const BottomNavigation: React.FC = () => {
             width: '134px',
             height: '5px',
             borderRadius: '999px',
-            backgroundColor: activeApp ? 'rgba(255, 255, 255, 0.75)' : 'rgba(255, 255, 255, 0.35)',
-            boxShadow: '0 1px 4px rgba(0, 0, 0, 0.3)',
+            backgroundColor: activeApp ? 'rgba(30, 26, 23, 0.45)' : 'rgba(30, 26, 23, 0.28)',
+            boxShadow: '0 1px 3px rgba(66, 48, 25, 0.08)',
             transition: 'background-color 0.2s ease',
           }}
         />

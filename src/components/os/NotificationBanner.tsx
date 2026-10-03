@@ -43,12 +43,12 @@ export const NotificationBanner: React.FC = () => {
               alignItems: 'center',
               gap: '12px',
               padding: '12px 14px',
-              background: 'rgba(26, 23, 19, 0.92)',
-              backdropFilter: 'blur(25px) saturate(140%)',
-              WebkitBackdropFilter: 'blur(25px) saturate(140%)',
-              border: '1px solid rgba(198, 165, 107, 0.4)',
+              background: 'rgba(248, 243, 234, 0.95)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              border: '1px solid var(--border-gold)',
               borderRadius: '22px',
-              boxShadow: '0 14px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(198, 165, 107, 0.15)',
+              boxShadow: 'var(--shadow-card)',
             }}
           >
             {/* Avatar Icon */}
@@ -57,18 +57,18 @@ export const NotificationBanner: React.FC = () => {
                 width: '38px',
                 height: '38px',
                 borderRadius: '50%',
-                background: 'linear-gradient(135deg, #c6a56b 0%, #8c6d37 100%)',
+                background: 'var(--sage)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: '#171613',
+                color: '#F8F3EA',
                 flexShrink: 0,
-                boxShadow: '0 2px 8px rgba(198, 165, 107, 0.3)',
+                boxShadow: '0 2px 8px rgba(138, 148, 122, 0.25)',
                 fontSize: '0.8rem',
                 fontWeight: 700,
               }}
             >
-              {activeNotification.avatarText || <Heart size={18} fill="#171613" />}
+              {activeNotification.avatarText || <Heart size={18} fill="#F8F3EA" />}
             </div>
 
             {/* Text Content */}
@@ -79,25 +79,26 @@ export const NotificationBanner: React.FC = () => {
                     fontFamily: 'var(--font-body)',
                     fontSize: '0.8rem',
                     fontWeight: 700,
-                    color: 'var(--color-champagne-gold)',
+                    color: 'var(--gold)',
                     letterSpacing: '0.02em',
                   }}
                 >
                   {activeNotification.sender}
                 </span>
-                <span style={{ fontSize: '0.68rem', color: 'var(--color-soft-gray)' }}>
+                <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>
                   {activeNotification.time}
                 </span>
               </div>
               <p
                 style={{
                   fontSize: '0.82rem',
-                  color: 'rgba(255, 255, 255, 0.95)',
+                  color: 'var(--text-primary)',
                   lineHeight: 1.35,
                   margin: 0,
                   whiteSpace: 'nowrap',
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
+                  fontWeight: 500,
                 }}
               >
                 {activeNotification.text}
@@ -114,11 +115,14 @@ export const NotificationBanner: React.FC = () => {
               }}
               style={{
                 padding: '6px',
-                color: 'var(--color-soft-gray)',
+                color: 'var(--text-muted)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 borderRadius: '50%',
+                background: 'transparent',
+                border: 'none',
+                cursor: 'pointer',
               }}
             >
               <X size={15} />

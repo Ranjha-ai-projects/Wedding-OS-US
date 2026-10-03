@@ -27,7 +27,7 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, title
               position: 'fixed',
               inset: 0,
               zIndex: 130,
-              backgroundColor: isSafe ? 'rgba(0, 0, 0, 0.75)' : 'rgba(0, 0, 0, 0.65)',
+              backgroundColor: isSafe ? 'rgba(30, 26, 23, 0.45)' : 'rgba(30, 26, 23, 0.35)',
               backdropFilter: isSafe ? 'none' : 'blur(8px)',
               WebkitBackdropFilter: isSafe ? 'none' : 'blur(8px)',
             }}
@@ -53,17 +53,18 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, title
               left: 0,
               right: 0,
               zIndex: 140,
-              backgroundColor: isSafe ? '#171613' : 'rgba(23, 22, 19, 0.95)',
-              backdropFilter: isSafe ? 'none' : 'blur(25px)',
-              WebkitBackdropFilter: isSafe ? 'none' : 'blur(25px)',
-              borderTop: '1px solid rgba(255, 255, 255, 0.16)',
+              backgroundColor: isSafe ? 'var(--bg-primary)' : 'rgba(248, 243, 234, 0.97)',
+              backdropFilter: isSafe ? 'none' : 'blur(20px)',
+              WebkitBackdropFilter: isSafe ? 'none' : 'blur(20px)',
+              borderTop: '1px solid var(--border-gold)',
               borderTopLeftRadius: '28px',
               borderTopRightRadius: '28px',
               maxHeight: '85vh',
               display: 'flex',
               flexDirection: 'column',
               paddingBottom: 'max(1.5rem, env(safe-area-inset-bottom))',
-              boxShadow: '0 -10px 40px rgba(0, 0, 0, 0.6)',
+              boxShadow: '0 -10px 40px rgba(66, 48, 25, 0.15)',
+              color: 'var(--text-primary)',
             }}
           >
             {/* Drag Handle Bar */}
@@ -81,7 +82,7 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, title
                   width: '40px',
                   height: '4px',
                   borderRadius: '2px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.3)',
+                  backgroundColor: 'rgba(184, 146, 83, 0.4)',
                 }}
               />
             </div>
@@ -91,7 +92,7 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, title
               <div
                 style={{
                   padding: '4px 1.5rem 12px 1.5rem',
-                  borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+                  borderBottom: '1px solid rgba(184, 146, 83, 0.25)',
                   textAlign: 'center',
                 }}
               >
@@ -99,9 +100,9 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose, title
                   style={{
                     fontFamily: 'var(--font-display)',
                     fontSize: '1.25rem',
-                    color: 'var(--color-warm-ivory)',
+                    color: 'var(--text-primary)',
                     margin: 0,
-                    fontWeight: 400,
+                    fontWeight: 500,
                   }}
                 >
                   {title}

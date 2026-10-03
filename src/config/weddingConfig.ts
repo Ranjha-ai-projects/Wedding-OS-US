@@ -362,10 +362,10 @@ export const weddingConfig: WeddingConfig = {
     dressCode: 'Black Tie Optional',
     description: 'We invite you to dress in celebratory formal wear. Think classic silhouettes, refined tailoring, and rich textured fabrics.',
     palettes: [
-      { name: 'Champagne Gold', hex: '#C6A56B', description: 'Warm metallic elegance' },
-      { name: 'Muted Sage', hex: '#747B68', description: 'Understated botanical green' },
-      { name: 'Classic Black', hex: '#171613', description: 'Timeless tuxedo & evening gowns' },
-      { name: 'Warm Cream', hex: '#EFE8DC', description: 'Neutral silk & linen tones' },
+      { name: 'Champagne', hex: '#B89253', description: 'Warm metallic elegance' },
+      { name: 'Muted Sage', hex: '#8A947A', description: 'Understated botanical accent' },
+      { name: 'Warm Charcoal', hex: '#1E1A17', description: 'Timeless tuxedo & evening wear' },
+      { name: 'Soft Cream', hex: '#F2EADF', description: 'Neutral silk & linen tones' },
     ],
     sections: [
       {

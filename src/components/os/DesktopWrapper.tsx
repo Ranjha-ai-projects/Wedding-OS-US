@@ -18,14 +18,14 @@ export const DesktopWrapper: React.FC<DesktopWrapperProps> = ({ children }) => {
         {/* Left Editorial Branding */}
         <div className="desktop-backdrop-left">
           <div className="desktop-brand">
-            <Sparkles size={14} color="var(--color-champagne-gold)" />
+            <Sparkles size={14} color="var(--gold)" />
             <span>Couple OS · Wedlio</span>
           </div>
 
           <h1 className="desktop-names">
             {weddingConfig.couple.brideName}
             <br />
-            <span style={{ fontStyle: 'italic', color: 'var(--color-champagne-gold)' }}>&amp;</span>
+            <span style={{ fontStyle: 'italic', color: 'var(--gold)' }}>&amp;</span>
             <br />
             {weddingConfig.couple.groomName}
           </h1>
@@ -46,22 +46,23 @@ export const DesktopWrapper: React.FC<DesktopWrapperProps> = ({ children }) => {
           <div
             style={{
               padding: '1.4rem',
-              borderRadius: '20px',
-              background: 'rgba(26, 23, 19, 0.45)',
+              borderRadius: '24px',
+              background: 'rgba(248, 243, 234, 0.85)',
               backdropFilter: 'blur(16px)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
+              border: '1px solid var(--border-gold)',
+              boxShadow: 'var(--shadow-card)',
               display: 'inline-flex',
               flexDirection: 'column',
               gap: '12px',
               textAlign: 'left',
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--color-champagne-gold)', fontSize: '0.8rem', fontWeight: 600 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--gold)', fontSize: '0.8rem', fontWeight: 600 }}>
               <Smartphone size={16} />
               <span>Mobile-First Experience</span>
             </div>
 
-            <p className="desktop-note">
+            <p className="desktop-note" style={{ margin: 0, color: 'var(--text-secondary)' }}>
               Designed as an interactive mobile operating system. Interact with the phone to explore their invitation, stories, soundtrack, and RSVP.
             </p>
 
@@ -73,13 +74,14 @@ export const DesktopWrapper: React.FC<DesktopWrapperProps> = ({ children }) => {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '6px',
-                  padding: '6px 12px',
+                  padding: '7px 14px',
                   borderRadius: '12px',
-                  background: isPlaying ? 'var(--color-champagne-gold)' : 'rgba(255, 255, 255, 0.08)',
-                  color: isPlaying ? '#171613' : 'var(--color-warm-ivory)',
+                  background: isPlaying ? 'var(--gold)' : 'rgba(242, 234, 223, 0.95)',
+                  color: isPlaying ? 'var(--bg-primary)' : 'var(--text-primary)',
                   fontSize: '0.72rem',
                   fontWeight: 600,
-                  border: '1px solid rgba(255, 255, 255, 0.12)',
+                  border: '1px solid var(--border-gold)',
+                  boxShadow: 'var(--shadow-subtle)',
                 }}
               >
                 <Volume2 size={13} />
@@ -94,12 +96,14 @@ export const DesktopWrapper: React.FC<DesktopWrapperProps> = ({ children }) => {
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '6px',
-                    padding: '6px 12px',
+                    padding: '7px 14px',
                     borderRadius: '12px',
-                    background: 'rgba(255, 255, 255, 0.08)',
-                    color: 'var(--color-warm-ivory)',
+                    background: 'rgba(242, 234, 223, 0.95)',
+                    color: 'var(--text-primary)',
                     fontSize: '0.72rem',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
+                    fontWeight: 600,
+                    border: '1px solid var(--border-gold)',
+                    boxShadow: 'var(--shadow-subtle)',
                   }}
                 >
                   <RotateCcw size={13} />
@@ -111,7 +115,7 @@ export const DesktopWrapper: React.FC<DesktopWrapperProps> = ({ children }) => {
         </div>
       </div>
 
-      {/* Centered Phone Canvas (Real Viewport on Mobile, Centered Phone Frame on Desktop) */}
+      {/* Centered Phone Canvas */}
       <main className="phone-canvas" id="couple-os-container">
         {children}
       </main>

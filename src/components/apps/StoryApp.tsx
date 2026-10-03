@@ -39,32 +39,38 @@ export const StoryApp: React.FC = () => {
 
   return (
     <AppShell title="Our Story" subtitle={coupleSubtitle}>
-      <div style={{ padding: '1rem 1.25rem 3rem 1.25rem' }}>
+      <div style={{ padding: '1rem 1.25rem 3.5rem 1.25rem' }}>
         {/* Editorial Subheading */}
-        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: '2.25rem' }}>
           <p
             style={{
               fontFamily: 'var(--font-display)',
               fontSize: '1.45rem',
-              color: 'var(--color-warm-ivory)',
+              color: 'var(--text-primary)',
               lineHeight: 1.3,
-              margin: '0 0 0.4rem 0',
+              margin: '0 0 0.45rem 0',
               fontWeight: 400,
             }}
           >
             Some conversations change everything.
           </p>
-          <p
-            style={{
-              fontSize: '0.8rem',
-              color: 'var(--color-champagne-gold)',
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
-              margin: 0,
-            }}
-          >
-            Four years told in words &amp; moments
-          </p>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', margin: '0 0 0.25rem 0' }}>
+            <span style={{ height: '1px', width: '28px', background: 'var(--border-gold)' }} />
+            <p
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: '0.74rem',
+                color: 'var(--gold)',
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                margin: 0,
+                fontWeight: 600,
+              }}
+            >
+              Four years told in words &amp; moments
+            </p>
+            <span style={{ height: '1px', width: '28px', background: 'var(--border-gold)' }} />
+          </div>
         </div>
 
         {/* Live In-App Welcome Message from Joshua (Only once per session) */}
@@ -80,8 +86,9 @@ export const StoryApp: React.FC = () => {
                 gap: '8px',
                 padding: '10px 14px',
                 borderRadius: '18px',
-                background: 'rgba(26, 23, 19, 0.75)',
-                border: '1px solid rgba(198, 165, 107, 0.3)',
+                background: 'var(--surface-cream)',
+                border: '1px solid var(--border-gold)',
+                boxShadow: 'var(--shadow-soft)',
                 width: 'fit-content',
               }}
             >
@@ -90,25 +97,25 @@ export const StoryApp: React.FC = () => {
                   width: '24px',
                   height: '24px',
                   borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #29251F 0%, #171613 100%)',
-                  border: '1px solid var(--color-champagne-gold)',
+                  background: 'var(--bg-secondary)',
+                  border: '1px solid var(--gold)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontSize: '0.65rem',
                   fontWeight: 700,
-                  color: 'var(--color-champagne-gold)',
+                  color: 'var(--gold)',
                 }}
               >
                 J
               </div>
-              <span style={{ fontSize: '0.75rem', color: 'var(--color-secondary-cream)' }}>
+              <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
                 Joshua is typing…
               </span>
               <div style={{ display: 'flex', gap: '3px', marginLeft: '4px' }}>
-                <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--color-champagne-gold)', animation: 'softPulse 0.8s infinite' }} />
-                <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--color-champagne-gold)', animation: 'softPulse 0.8s infinite 0.2s' }} />
-                <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--color-champagne-gold)', animation: 'softPulse 0.8s infinite 0.4s' }} />
+                <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--gold)', animation: 'softPulse 0.8s infinite' }} />
+                <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--gold)', animation: 'softPulse 0.8s infinite 0.2s' }} />
+                <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--gold)', animation: 'softPulse 0.8s infinite 0.4s' }} />
               </div>
             </motion.div>
           )}
@@ -130,14 +137,14 @@ export const StoryApp: React.FC = () => {
                     width: '28px',
                     height: '28px',
                     borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #29251F 0%, #171613 100%)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    background: '#E7DEC8',
+                    border: '1px solid var(--border-gold)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     fontSize: '0.68rem',
                     fontWeight: 700,
-                    color: 'var(--color-champagne-gold)',
+                    color: 'var(--gold)',
                     flexShrink: 0,
                   }}
                 >
@@ -149,20 +156,20 @@ export const StoryApp: React.FC = () => {
                     maxWidth: '82%',
                     padding: '10px 14px',
                     borderRadius: '18px 18px 18px 4px',
-                    background: 'rgba(38, 33, 27, 0.9)',
-                    border: '1px solid rgba(198, 165, 107, 0.4)',
-                    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+                    background: 'var(--surface-cream)',
+                    border: '1px solid var(--border-gold)',
+                    boxShadow: 'var(--shadow-soft)',
                   }}
                 >
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: '8px', marginBottom: '2px' }}>
-                    <span style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--color-champagne-gold)' }}>
+                    <span style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--gold)' }}>
                       Joshua
                     </span>
-                    <span style={{ fontSize: '0.62rem', color: 'rgba(255, 255, 255, 0.4)' }}>
+                    <span style={{ fontSize: '0.62rem', color: 'var(--text-muted)' }}>
                       just now
                     </span>
                   </div>
-                  <p style={{ margin: 0, fontSize: '0.88rem', color: 'var(--color-warm-ivory)', lineHeight: 1.35 }}>
+                  <p style={{ margin: 0, fontSize: '0.88rem', color: 'var(--text-primary)', lineHeight: 1.35 }}>
                     Hey Sarah — glad you found our story 👀 Enjoy exploring!
                   </p>
                 </div>
@@ -196,24 +203,24 @@ export const StoryApp: React.FC = () => {
                     gap: '0.8rem',
                   }}
                 >
-                  <div style={{ height: '1px', flex: 1, background: 'rgba(255, 255, 255, 0.12)' }} />
+                  <div style={{ height: '1px', flex: 1, background: 'rgba(184, 146, 83, 0.25)' }} />
                   <div
                     style={{
                       padding: '4px 14px',
                       borderRadius: '16px',
-                      background: 'rgba(26, 23, 19, 0.9)',
-                      border: '1px solid rgba(198, 165, 107, 0.35)',
+                      background: 'var(--bg-secondary)',
+                      border: '1px solid rgba(184, 146, 83, 0.45)',
                       fontFamily: 'var(--font-body)',
                       fontSize: '0.72rem',
                       fontWeight: 600,
-                      letterSpacing: '0.18em',
-                      color: 'var(--color-champagne-gold)',
+                      letterSpacing: '0.15em',
+                      color: 'var(--gold)',
                       textTransform: 'uppercase',
                     }}
                   >
                     {moment.date} · {moment.title}
                   </div>
-                  <div style={{ height: '1px', flex: 1, background: 'rgba(255, 255, 255, 0.12)' }} />
+                  <div style={{ height: '1px', flex: 1, background: 'rgba(184, 146, 83, 0.25)' }} />
                 </div>
 
                 {/* Couple OS Messaging Stream */}
@@ -245,15 +252,15 @@ export const StoryApp: React.FC = () => {
                             height: '28px',
                             borderRadius: '50%',
                             background: isGroom
-                              ? 'linear-gradient(135deg, #29251F 0%, #171613 100%)'
-                              : 'linear-gradient(135deg, #c6a56b 0%, #8c6d37 100%)',
-                            border: '1px solid rgba(255, 255, 255, 0.2)',
+                              ? '#E7DEC8'
+                              : 'var(--sage)',
+                            border: '1px solid rgba(184, 146, 83, 0.3)',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
                             fontSize: '0.68rem',
                             fontWeight: 700,
-                            color: isGroom ? 'var(--color-champagne-gold)' : '#171613',
+                            color: isGroom ? 'var(--gold)' : '#F8F3EA',
                             flexShrink: 0,
                           }}
                         >
@@ -263,19 +270,16 @@ export const StoryApp: React.FC = () => {
                         {/* Speech Bubble */}
                         <div
                           style={{
-                            maxWidth: '75%',
+                            maxWidth: '78%',
                             padding: '10px 14px',
                             borderRadius: isGroom
                               ? '18px 18px 18px 4px'
                               : '18px 18px 4px 18px',
                             background: isGroom
-                              ? 'rgba(38, 33, 27, 0.85)'
-                              : 'linear-gradient(135deg, rgba(198, 165, 107, 0.35) 0%, rgba(168, 135, 82, 0.25) 100%)',
-                            backdropFilter: 'blur(10px)',
-                            border: isGroom
-                              ? '1px solid rgba(255, 255, 255, 0.12)'
-                              : '1px solid rgba(198, 165, 107, 0.45)',
-                            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+                              ? 'rgba(255, 255, 255, 0.65)'
+                              : 'var(--bg-secondary)',
+                            border: '1px solid rgba(184, 146, 83, 0.24)',
+                            boxShadow: 'var(--shadow-soft)',
                           }}
                         >
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: '8px', marginBottom: '2px' }}>
@@ -283,13 +287,13 @@ export const StoryApp: React.FC = () => {
                               style={{
                                 fontSize: '0.7rem',
                                 fontWeight: 700,
-                                color: isGroom ? 'var(--color-soft-gray)' : 'var(--color-champagne-gold)',
+                                color: 'var(--gold)',
                               }}
                             >
                               {isGroom ? weddingConfig.couple.groomName : weddingConfig.couple.brideName}
                             </span>
                             {msg.time && (
-                              <span style={{ fontSize: '0.62rem', color: 'rgba(255, 255, 255, 0.4)' }}>
+                              <span style={{ fontSize: '0.62rem', color: 'var(--text-muted)' }}>
                                 {msg.time}
                               </span>
                             )}
@@ -298,7 +302,7 @@ export const StoryApp: React.FC = () => {
                             style={{
                               margin: 0,
                               fontSize: '0.88rem',
-                              color: 'var(--color-warm-ivory)',
+                              color: 'var(--text-primary)',
                               lineHeight: 1.35,
                             }}
                           >
@@ -318,8 +322,9 @@ export const StoryApp: React.FC = () => {
                       borderRadius: '22px',
                       overflow: 'hidden',
                       position: 'relative',
-                      border: '1px solid rgba(255, 255, 255, 0.15)',
-                      boxShadow: '0 12px 30px rgba(0, 0, 0, 0.4)',
+                      border: '1px solid var(--border-gold)',
+                      boxShadow: 'var(--shadow-card)',
+                      background: 'var(--bg-secondary)',
                     }}
                   >
                     <img
@@ -341,9 +346,9 @@ export const StoryApp: React.FC = () => {
                           left: 0,
                           right: 0,
                           padding: '12px 14px',
-                          background: 'linear-gradient(to top, rgba(18, 16, 13, 0.85) 0%, transparent 100%)',
+                          background: 'linear-gradient(to top, rgba(30, 26, 23, 0.78) 0%, transparent 100%)',
                           fontSize: '0.78rem',
-                          color: 'var(--color-secondary-cream)',
+                          color: '#F8F3EA',
                           fontStyle: 'italic',
                         }}
                       >
@@ -360,24 +365,25 @@ export const StoryApp: React.FC = () => {
           <div
             style={{
               textAlign: 'center',
-              padding: '2rem 1rem',
+              padding: '2rem 1.25rem',
               borderRadius: '24px',
-              background: 'rgba(26, 23, 19, 0.6)',
-              border: '1px solid rgba(198, 165, 107, 0.3)',
+              background: 'var(--surface-cream)',
+              border: '1px solid var(--border-gold)',
+              boxShadow: 'var(--shadow-card)',
             }}
           >
-            <Heart size={22} color="var(--color-champagne-gold)" style={{ margin: '0 auto 0.75rem auto' }} />
+            <Heart size={22} color="var(--gold)" style={{ margin: '0 auto 0.75rem auto' }} />
             <p
               style={{
                 fontFamily: 'var(--font-display)',
                 fontSize: '1.25rem',
-                color: 'var(--color-warm-ivory)',
+                color: 'var(--text-primary)',
                 margin: '0 0 0.5rem 0',
               }}
             >
               “And now, October 25, 2026.”
             </p>
-            <p style={{ fontSize: '0.82rem', color: 'var(--color-soft-gray)', margin: 0 }}>
+            <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', margin: 0 }}>
               The best chapter begins with all of you by our side.
             </p>
           </div>

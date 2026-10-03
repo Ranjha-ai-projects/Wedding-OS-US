@@ -17,7 +17,7 @@ export const AppShell: React.FC<AppShellProps> = ({
   subtitle,
   children,
   headerRight,
-  bgColor = '#171613',
+  bgColor = '#F8F3EA',
 }) => {
   const { closeApp, performanceProfile } = useOS();
   const isSafe = performanceProfile === 'safe';
@@ -55,12 +55,12 @@ export const AppShell: React.FC<AppShellProps> = ({
         willChange: 'transform',
       }}
     >
-      {/* Phone Status Bar */}
+      {/* Phone Status Bar (Dark text on warm ivory surface) */}
       <div style={{ position: 'relative', zIndex: 20 }}>
-        <StatusBar variant="light" />
+        <StatusBar variant="dark" />
       </div>
 
-      {/* App Header Bar */}
+      {/* App Header Bar (Warm Stationery Glass) */}
       <div
         style={{
           position: 'relative',
@@ -69,10 +69,11 @@ export const AppShell: React.FC<AppShellProps> = ({
           alignItems: 'center',
           justifyContent: 'space-between',
           padding: '0.5rem 1.25rem 0.65rem 1.25rem',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-          background: isSafe ? 'rgba(23, 22, 19, 0.98)' : 'rgba(23, 22, 19, 0.85)',
-          backdropFilter: isSafe ? 'none' : 'blur(20px)',
-          WebkitBackdropFilter: isSafe ? 'none' : 'blur(20px)',
+          borderBottom: '1px solid rgba(184, 146, 83, 0.20)',
+          background: isSafe ? 'rgba(242, 234, 223, 0.98)' : 'rgba(248, 243, 234, 0.88)',
+          backdropFilter: isSafe ? 'none' : 'blur(16px)',
+          WebkitBackdropFilter: isSafe ? 'none' : 'blur(16px)',
+          boxShadow: '0 2px 10px rgba(66, 48, 25, 0.04)',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
@@ -85,12 +86,13 @@ export const AppShell: React.FC<AppShellProps> = ({
               width: '38px',
               height: '38px',
               borderRadius: '50%',
-              background: 'rgba(255, 255, 255, 0.08)',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
+              background: 'rgba(248, 243, 234, 0.8)',
+              border: '1px solid rgba(184, 146, 83, 0.28)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: 'var(--color-warm-ivory)',
+              color: 'var(--text-primary)',
+              boxShadow: 'var(--shadow-subtle)',
             }}
           >
             <ArrowLeft size={18} />
@@ -101,7 +103,7 @@ export const AppShell: React.FC<AppShellProps> = ({
               style={{
                 fontFamily: 'var(--font-display)',
                 fontSize: '1.25rem',
-                color: 'var(--color-warm-ivory)',
+                color: 'var(--text-primary)',
                 margin: 0,
                 lineHeight: 1.1,
                 fontWeight: 500,
@@ -114,8 +116,8 @@ export const AppShell: React.FC<AppShellProps> = ({
                 style={{
                   fontFamily: 'var(--font-body)',
                   fontSize: '0.72rem',
-                  color: 'var(--color-champagne-gold)',
-                  letterSpacing: '0.12em',
+                  color: 'var(--gold)',
+                  letterSpacing: '0.15em',
                   textTransform: 'uppercase',
                   margin: 0,
                   fontWeight: 600,
@@ -138,11 +140,13 @@ export const AppShell: React.FC<AppShellProps> = ({
                 width: '34px',
                 height: '34px',
                 borderRadius: '50%',
-                background: 'rgba(255, 255, 255, 0.06)',
+                background: 'rgba(248, 243, 234, 0.8)',
+                border: '1px solid rgba(184, 146, 83, 0.28)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: 'rgba(255, 255, 255, 0.6)',
+                color: 'var(--text-primary)',
+                boxShadow: 'var(--shadow-subtle)',
               }}
             >
               <X size={16} />

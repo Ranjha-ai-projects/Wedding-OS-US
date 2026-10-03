@@ -63,7 +63,7 @@ export const LockScreen: React.FC = () => {
         flexDirection: 'column',
         justifyContent: 'space-between',
         overflow: 'hidden',
-        backgroundColor: '#171613',
+        backgroundColor: '#F8F3EA',
         transform: 'translateZ(0)',
         WebkitBackfaceVisibility: 'hidden',
         backfaceVisibility: 'hidden',
@@ -89,17 +89,17 @@ export const LockScreen: React.FC = () => {
         }}
       />
 
-      {/* Dark Warm Cinematic Gradient Overlay */}
+      {/* Luminous Warm Photographic Overlay */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
           background: `linear-gradient(
             to bottom,
-            rgba(18, 16, 13, 0.65) 0%,
-            rgba(18, 16, 13, 0.25) 35%,
-            rgba(18, 16, 13, 0.45) 65%,
-            rgba(18, 16, 13, 0.92) 100%
+            rgba(30, 26, 23, 0.40) 0%,
+            rgba(248, 243, 234, 0.15) 35%,
+            rgba(30, 26, 23, 0.35) 65%,
+            rgba(30, 26, 23, 0.78) 100%
           )`,
           pointerEvents: 'none',
         }}
@@ -119,11 +119,12 @@ export const LockScreen: React.FC = () => {
           <p
             style={{
               fontSize: '0.88rem',
-              fontWeight: 500,
+              fontWeight: 600,
               color: 'var(--color-secondary-cream)',
-              letterSpacing: '0.04em',
+              letterSpacing: '0.08em',
               margin: '0 0 0.25rem 0',
               textTransform: 'uppercase',
+              textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)',
             }}
           >
             {dateStr}
@@ -134,10 +135,11 @@ export const LockScreen: React.FC = () => {
               fontFamily: 'var(--font-display)',
               fontSize: '4.8rem',
               fontWeight: 400,
-              color: 'var(--color-warm-ivory)',
+              color: '#FFFFFF',
               lineHeight: 0.95,
               margin: '0 0 0.5rem 0',
               letterSpacing: '-0.02em',
+              textShadow: '0 2px 20px rgba(0, 0, 0, 0.4)',
             }}
           >
             {time}
@@ -148,9 +150,10 @@ export const LockScreen: React.FC = () => {
               style={{
                 fontFamily: 'var(--font-display)',
                 fontSize: '1.5rem',
-                color: 'var(--color-champagne-gold)',
+                color: 'var(--gold)',
                 margin: '0 0 0.2rem 0',
                 fontWeight: 400,
+                textShadow: '0 2px 10px rgba(0, 0, 0, 0.35)',
               }}
             >
               {weddingConfig.couple.brideName} &amp; {weddingConfig.couple.groomName}
@@ -158,10 +161,12 @@ export const LockScreen: React.FC = () => {
             <p
               style={{
                 fontSize: '0.82rem',
-                color: 'rgba(255, 255, 255, 0.75)',
+                color: 'rgba(255, 255, 255, 0.88)',
                 letterSpacing: '0.12em',
                 textTransform: 'uppercase',
                 margin: 0,
+                fontWeight: 500,
+                textShadow: '0 1px 6px rgba(0, 0, 0, 0.3)',
               }}
             >
               {displayDays} days until we say “I do”
@@ -170,7 +175,7 @@ export const LockScreen: React.FC = () => {
         </div>
       </div>
 
-      {/* Middle: Incoming Lock Screen Notification */}
+      {/* Middle: Light Glass Lock Screen Notification Card */}
       <div
         style={{
           position: 'relative',
@@ -187,11 +192,11 @@ export const LockScreen: React.FC = () => {
             cursor: 'pointer',
             padding: '14px 16px',
             borderRadius: '24px',
-            background: 'rgba(26, 23, 19, 0.76)',
-            backdropFilter: 'blur(20px) saturate(125%)',
-            WebkitBackdropFilter: 'blur(20px) saturate(125%)',
-            border: '1px solid rgba(255, 255, 255, 0.16)',
-            boxShadow: '0 12px 35px rgba(0, 0, 0, 0.45)',
+            background: 'rgba(248, 243, 234, 0.94)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+            border: '1px solid var(--border-gold)',
+            boxShadow: 'var(--shadow-card)',
             display: 'flex',
             alignItems: 'center',
             gap: '12px',
@@ -202,15 +207,16 @@ export const LockScreen: React.FC = () => {
               width: '40px',
               height: '40px',
               borderRadius: '50%',
-              background: 'linear-gradient(135deg, #c6a56b 0%, #8c6d37 100%)',
+              background: 'var(--gold)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: '#171613',
+              color: 'var(--bg-primary)',
               flexShrink: 0,
+              boxShadow: '0 2px 8px rgba(184, 146, 83, 0.3)',
             }}
           >
-            <Heart size={20} fill="#171613" />
+            <Heart size={20} fill="var(--bg-primary)" />
           </div>
 
           <div style={{ flex: 1, minWidth: 0 }}>
@@ -219,13 +225,13 @@ export const LockScreen: React.FC = () => {
                 style={{
                   fontSize: '0.78rem',
                   fontWeight: 700,
-                  color: 'var(--color-champagne-gold)',
+                  color: 'var(--gold)',
                   letterSpacing: '0.04em',
                 }}
               >
                 Couple OS
               </span>
-              <span style={{ fontSize: '0.68rem', color: 'var(--color-soft-gray)' }}>
+              <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>
                 now
               </span>
             </div>
@@ -233,8 +239,8 @@ export const LockScreen: React.FC = () => {
               style={{
                 margin: 0,
                 fontSize: '0.84rem',
-                color: 'rgba(255, 255, 255, 0.95)',
-                fontWeight: 500,
+                color: 'var(--text-primary)',
+                fontWeight: 600,
                 lineHeight: 1.3,
               }}
             >
@@ -266,18 +272,19 @@ export const LockScreen: React.FC = () => {
             flexDirection: 'column',
             alignItems: 'center',
             gap: '4px',
-            color: 'var(--color-warm-ivory)',
+            color: '#FFFFFF',
             marginBottom: '10px',
           }}
         >
-          <ChevronUp size={20} strokeWidth={2} style={{ opacity: 0.7 }} />
+          <ChevronUp size={20} strokeWidth={2.2} style={{ opacity: 0.85 }} />
           <span
             style={{
               fontSize: '0.75rem',
               letterSpacing: '0.14em',
               textTransform: 'uppercase',
-              color: 'rgba(255, 255, 255, 0.85)',
-              fontWeight: 500,
+              color: 'rgba(255, 255, 255, 0.9)',
+              fontWeight: 600,
+              textShadow: '0 1px 6px rgba(0, 0, 0, 0.4)',
             }}
           >
             Swipe up to open

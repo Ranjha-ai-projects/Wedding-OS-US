@@ -16,13 +16,11 @@ export const AttireApp: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           style={{
             textAlign: 'center',
-            padding: '2rem 1.5rem',
+            padding: '2.25rem 1.5rem',
             borderRadius: '28px',
-            background: 'rgba(26, 23, 19, 0.78)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
-            border: '1px solid rgba(198, 165, 107, 0.35)',
-            boxShadow: '0 14px 40px rgba(0, 0, 0, 0.45)',
+            background: 'var(--bg-secondary)',
+            border: '1px solid var(--border-gold)',
+            boxShadow: 'var(--shadow-card)',
             marginBottom: '1.75rem',
           }}
         >
@@ -33,17 +31,17 @@ export const AttireApp: React.FC = () => {
               gap: '6px',
               padding: '4px 12px',
               borderRadius: '20px',
-              background: 'rgba(198, 165, 107, 0.15)',
-              border: '1px solid rgba(198, 165, 107, 0.3)',
+              background: 'rgba(248, 243, 234, 0.9)',
+              border: '1px solid var(--border-gold)',
               fontSize: '0.72rem',
-              color: 'var(--color-champagne-gold)',
+              color: 'var(--gold)',
               fontWeight: 600,
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
               marginBottom: '1rem',
             }}
           >
-            <Sparkles size={12} />
+            <Sparkles size={12} color="var(--sage)" />
             <span>Dress Code</span>
           </div>
 
@@ -51,7 +49,7 @@ export const AttireApp: React.FC = () => {
             style={{
               fontFamily: 'var(--font-display)',
               fontSize: '2.2rem',
-              color: 'var(--color-warm-ivory)',
+              color: 'var(--text-primary)',
               lineHeight: 1.05,
               margin: '0 0 0.75rem 0',
               fontWeight: 400,
@@ -63,7 +61,7 @@ export const AttireApp: React.FC = () => {
           <p
             style={{
               fontSize: '0.88rem',
-              color: 'var(--color-secondary-cream)',
+              color: 'var(--text-secondary)',
               lineHeight: 1.5,
               margin: '0 auto',
               maxWidth: '300px',
@@ -78,10 +76,10 @@ export const AttireApp: React.FC = () => {
           <h3
             style={{
               fontFamily: 'var(--font-body)',
-              fontSize: '0.8rem',
+              fontSize: '0.78rem',
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
-              color: 'var(--color-champagne-gold)',
+              color: 'var(--gold)',
               marginBottom: '0.85rem',
               fontWeight: 600,
             }}
@@ -100,8 +98,9 @@ export const AttireApp: React.FC = () => {
                   style={{
                     padding: '12px',
                     borderRadius: '18px',
-                    background: 'rgba(26, 23, 19, 0.65)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    background: 'var(--bg-secondary)',
+                    border: '1px solid var(--border-gold)',
+                    boxShadow: 'var(--shadow-soft)',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '12px',
@@ -114,8 +113,8 @@ export const AttireApp: React.FC = () => {
                       height: '38px',
                       borderRadius: '12px',
                       backgroundColor: palette.hex,
-                      border: '1px solid rgba(255, 255, 255, 0.25)',
-                      boxShadow: '0 3px 10px rgba(0, 0, 0, 0.3)',
+                      border: '1px solid rgba(184, 146, 83, 0.35)',
+                      boxShadow: '0 2px 8px rgba(66, 48, 25, 0.1)',
                       flexShrink: 0,
                     }}
                   />
@@ -126,7 +125,7 @@ export const AttireApp: React.FC = () => {
                         margin: 0,
                         fontSize: '0.82rem',
                         fontWeight: 600,
-                        color: 'var(--color-warm-ivory)',
+                        color: 'var(--text-primary)',
                       }}
                     >
                       {palette.name}
@@ -135,7 +134,7 @@ export const AttireApp: React.FC = () => {
                       style={{
                         margin: 0,
                         fontSize: '0.68rem',
-                        color: 'var(--color-soft-gray)',
+                        color: 'var(--text-muted)',
                       }}
                     >
                       {palette.description}
@@ -159,9 +158,9 @@ export const AttireApp: React.FC = () => {
                 style={{
                   padding: '1.4rem',
                   borderRadius: '24px',
-                  background: 'rgba(26, 23, 19, 0.7)',
-                  backdropFilter: 'blur(16px)',
-                  border: '1px solid rgba(255, 255, 255, 0.12)',
+                  background: 'var(--bg-secondary)',
+                  border: '1px solid var(--border-gold)',
+                  boxShadow: 'var(--shadow-card)',
                 }}
               >
                 <div style={{ marginBottom: '10px' }}>
@@ -169,7 +168,7 @@ export const AttireApp: React.FC = () => {
                     style={{
                       fontFamily: 'var(--font-display)',
                       fontSize: '1.45rem',
-                      color: 'var(--color-warm-ivory)',
+                      color: 'var(--text-primary)',
                       margin: '0 0 4px 0',
                       lineHeight: 1.2,
                     }}
@@ -179,7 +178,7 @@ export const AttireApp: React.FC = () => {
                   <p
                     style={{
                       fontSize: '0.74rem',
-                      color: 'var(--color-champagne-gold)',
+                      color: 'var(--gold)',
                       fontWeight: 600,
                       letterSpacing: '0.08em',
                       textTransform: 'uppercase',
@@ -194,7 +193,7 @@ export const AttireApp: React.FC = () => {
                 <p
                   style={{
                     fontSize: '0.84rem',
-                    color: 'var(--color-secondary-cream)',
+                    color: 'var(--text-secondary)',
                     lineHeight: 1.45,
                     marginBottom: '1rem',
                   }}
@@ -204,8 +203,8 @@ export const AttireApp: React.FC = () => {
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                   {sec.guidelines.map((g, gIdx) => (
-                    <div key={gIdx} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.78rem', color: 'rgba(255, 255, 255, 0.8)' }}>
-                      <Check size={14} color="var(--color-champagne-gold)" />
+                    <div key={gIdx} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.78rem', color: 'var(--text-primary)' }}>
+                      <Check size={14} color="var(--sage)" />
                       <span>{g}</span>
                     </div>
                   ))}

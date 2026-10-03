@@ -9,8 +9,7 @@ interface PersistentBackgroundProps {
  * Persistent Background Layer for Couple OS
  * 
  * Stays permanently mounted at the base layer across all app navigation.
- * Under "safe" profile: remains static with zero scale/parallax.
- * Under "full" profile: provides subtle depth.
+ * Uses warm photographic grading with soft champagne/cream tone.
  */
 export const PersistentBackground: React.FC<PersistentBackgroundProps> = ({ isSafe }) => {
   return (
@@ -24,13 +23,13 @@ export const PersistentBackground: React.FC<PersistentBackgroundProps> = ({ isSa
         height: '100%',
         overflow: 'hidden',
         pointerEvents: 'none',
-        backgroundColor: '#171613',
+        backgroundColor: '#F8F3EA',
         transform: 'translateZ(0)',
         WebkitBackfaceVisibility: 'hidden',
         backfaceVisibility: 'hidden',
       }}
     >
-      {/* Primary Wedding Photograph - Stays permanently mounted */}
+      {/* Primary Wedding Photograph */}
       <div
         style={{
           position: 'absolute',
@@ -44,17 +43,17 @@ export const PersistentBackground: React.FC<PersistentBackgroundProps> = ({ isSa
         }}
       />
 
-      {/* Dark warm vignette and gradient overlay */}
+      {/* Luminous Warm Cream & Champagne Soft Fade Overlay */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
           background: `linear-gradient(
             to bottom,
-            rgba(18, 16, 13, 0.70) 0%,
-            rgba(18, 16, 13, 0.38) 30%,
-            rgba(18, 16, 13, 0.55) 60%,
-            rgba(18, 16, 13, 0.94) 100%
+            rgba(248, 243, 234, 0.42) 0%,
+            rgba(248, 243, 234, 0.18) 30%,
+            rgba(248, 243, 234, 0.50) 60%,
+            rgba(248, 243, 234, 0.94) 100%
           )`,
         }}
       />

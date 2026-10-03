@@ -28,12 +28,12 @@ export const InviteApp: React.FC = () => {
           style={{
             width: '100%',
             maxWidth: '380px',
-            backgroundColor: 'var(--color-warm-ivory)',
-            color: 'var(--color-ink-black)',
+            backgroundColor: 'var(--bg-secondary)',
+            color: 'var(--text-primary)',
             borderRadius: '28px',
             padding: '2.5rem 1.75rem 2.25rem 1.75rem',
-            boxShadow: '0 20px 50px rgba(0, 0, 0, 0.45)',
-            border: '1px solid rgba(198, 165, 107, 0.4)',
+            boxShadow: 'var(--shadow-card)',
+            border: '1px solid var(--border-gold)',
             textAlign: 'center',
             position: 'relative',
             overflow: 'hidden',
@@ -44,7 +44,7 @@ export const InviteApp: React.FC = () => {
             style={{
               position: 'absolute',
               inset: '10px',
-              border: '1px solid rgba(198, 165, 107, 0.35)',
+              border: '1px solid rgba(184, 146, 83, 0.28)',
               borderRadius: '20px',
               pointerEvents: 'none',
             }}
@@ -59,9 +59,10 @@ export const InviteApp: React.FC = () => {
               width: '48px',
               height: '48px',
               borderRadius: '50%',
-              border: '1px solid var(--color-champagne-gold)',
+              border: '1px solid var(--gold)',
+              background: 'rgba(248, 243, 234, 0.65)',
               marginBottom: '1.5rem',
-              color: 'var(--color-deep-champagne)',
+              color: 'var(--gold)',
             }}
           >
             <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontStyle: 'italic' }}>
@@ -76,8 +77,8 @@ export const InviteApp: React.FC = () => {
               fontSize: '0.78rem',
               letterSpacing: '0.22em',
               textTransform: 'uppercase',
-              color: 'var(--color-espresso)',
-              marginBottom: '1.75rem',
+              color: 'var(--text-secondary)',
+              marginBottom: '1.5rem',
               fontWeight: 500,
             }}
           >
@@ -91,7 +92,7 @@ export const InviteApp: React.FC = () => {
               fontSize: 'clamp(2.8rem, 8vw, 3.4rem)',
               lineHeight: 0.95,
               fontWeight: 400,
-              color: 'var(--color-ink-black)',
+              color: 'var(--text-primary)',
               margin: '0',
             }}
           >
@@ -103,7 +104,7 @@ export const InviteApp: React.FC = () => {
               fontFamily: 'var(--font-display)',
               fontSize: '1.8rem',
               fontStyle: 'italic',
-              color: 'var(--color-champagne-gold)',
+              color: 'var(--gold)',
               margin: '0.35rem 0',
             }}
           >
@@ -116,7 +117,7 @@ export const InviteApp: React.FC = () => {
               fontSize: 'clamp(2.8rem, 8vw, 3.4rem)',
               lineHeight: 0.95,
               fontWeight: 400,
-              color: 'var(--color-ink-black)',
+              color: 'var(--text-primary)',
               margin: '0 0 1.75rem 0',
             }}
           >
@@ -128,7 +129,7 @@ export const InviteApp: React.FC = () => {
             style={{
               fontFamily: 'var(--font-body)',
               fontSize: '0.88rem',
-              color: 'var(--color-espresso)',
+              color: 'var(--text-secondary)',
               lineHeight: 1.5,
               maxWidth: '240px',
               margin: '0 auto 1.75rem auto',
@@ -141,8 +142,8 @@ export const InviteApp: React.FC = () => {
           <div
             style={{
               padding: '1.2rem 0',
-              borderTop: '1px solid rgba(198, 165, 107, 0.3)',
-              borderBottom: '1px solid rgba(198, 165, 107, 0.3)',
+              borderTop: '1px solid rgba(184, 146, 83, 0.3)',
+              borderBottom: '1px solid rgba(184, 146, 83, 0.3)',
               marginBottom: '2rem',
             }}
           >
@@ -150,7 +151,7 @@ export const InviteApp: React.FC = () => {
               style={{
                 fontFamily: 'var(--font-display)',
                 fontSize: '1.35rem',
-                color: 'var(--color-ink-black)',
+                color: 'var(--text-primary)',
                 margin: '0 0 0.3rem 0',
                 fontWeight: 500,
               }}
@@ -163,7 +164,7 @@ export const InviteApp: React.FC = () => {
                 fontSize: '0.8rem',
                 letterSpacing: '0.2em',
                 textTransform: 'uppercase',
-                color: 'var(--color-deep-champagne)',
+                color: 'var(--gold)',
                 margin: 0,
                 fontWeight: 600,
               }}
@@ -180,12 +181,12 @@ export const InviteApp: React.FC = () => {
               onClick={() => openApp('rsvp')}
               className="btn-luxury"
               style={{
-                backgroundColor: 'var(--color-ink-black)',
-                color: 'var(--color-warm-ivory)',
-                boxShadow: '0 4px 15px rgba(23, 22, 19, 0.25)',
+                backgroundColor: 'var(--text-primary)',
+                color: 'var(--bg-primary)',
+                boxShadow: 'var(--shadow-soft)',
               }}
             >
-              <CheckCircle2 size={16} color="var(--color-champagne-gold)" />
+              <CheckCircle2 size={16} color="var(--gold)" />
               <span>RSVP to Wedding</span>
             </motion.button>
 
@@ -196,11 +197,11 @@ export const InviteApp: React.FC = () => {
               className="btn-luxury"
               style={{
                 backgroundColor: 'transparent',
-                color: 'var(--color-espresso)',
-                border: '1px solid rgba(41, 37, 31, 0.25)',
+                color: 'var(--text-primary)',
+                border: '1px solid rgba(184, 146, 83, 0.35)',
               }}
             >
-              <Calendar size={16} />
+              <Calendar size={16} color="var(--sage)" />
               <span>View Events Schedule</span>
             </motion.button>
           </div>
@@ -211,8 +212,8 @@ export const InviteApp: React.FC = () => {
           style={{
             marginTop: '1.5rem',
             fontSize: '0.75rem',
-            color: 'var(--color-soft-gray)',
-            letterSpacing: '0.08em',
+            color: 'var(--text-muted)',
+            letterSpacing: '0.12em',
             textTransform: 'uppercase',
           }}
         >

@@ -6,7 +6,7 @@ interface StatusBarProps {
   variant?: 'light' | 'dark';
 }
 
-export const StatusBar: React.FC<StatusBarProps> = ({ variant = 'light' }) => {
+export const StatusBar: React.FC<StatusBarProps> = ({ variant = 'dark' }) => {
   const { openNotificationCenter } = useOS();
   const [time, setTime] = useState('9:41');
 
@@ -24,7 +24,7 @@ export const StatusBar: React.FC<StatusBarProps> = ({ variant = 'light' }) => {
     return () => clearInterval(interval);
   }, []);
 
-  const textColor = variant === 'light' ? 'rgba(255, 255, 255, 0.92)' : 'rgba(23, 22, 19, 0.9)';
+  const textColor = variant === 'light' ? 'rgba(255, 255, 255, 0.95)' : 'var(--text-primary)';
 
   return (
     <header
@@ -63,7 +63,7 @@ export const StatusBar: React.FC<StatusBarProps> = ({ variant = 'light' }) => {
         <span style={{ fontFamily: 'var(--font-body)', fontWeight: 600 }}>{time}</span>
       </button>
 
-      {/* Clean center space without redundant faux notch */}
+      {/* Clean center space */}
       <div style={{ flex: 1 }} />
 
       {/* Right System Icons */}

@@ -42,20 +42,20 @@ export const PhotosApp: React.FC = () => {
   return (
     <AppShell title="Photos" subtitle={coupleSubtitle}>
       <div style={{ padding: '0.75rem 1.25rem 3rem 1.25rem' }}>
-        {/* Large "Memory" Card */}
+        {/* Large "Featured Memory" Card */}
         <motion.div
           whileTap={{ scale: 0.98 }}
           onClick={() => setStoryIndex(0)}
           style={{
             position: 'relative',
             width: '100%',
-            height: '190px',
+            height: '200px',
             borderRadius: '26px',
             overflow: 'hidden',
             marginBottom: '1.5rem',
             cursor: 'pointer',
-            boxShadow: '0 14px 35px rgba(0, 0, 0, 0.4)',
-            border: '1px solid rgba(255, 255, 255, 0.16)',
+            boxShadow: 'var(--shadow-card)',
+            border: '1px solid var(--border-gold)',
           }}
         >
           <img
@@ -71,11 +71,11 @@ export const PhotosApp: React.FC = () => {
             style={{
               position: 'absolute',
               inset: 0,
-              background: 'linear-gradient(to top, rgba(18, 16, 13, 0.9) 0%, rgba(18, 16, 13, 0.2) 60%, rgba(18, 16, 13, 0.5) 100%)',
+              background: 'linear-gradient(to top, rgba(30, 26, 23, 0.78) 0%, rgba(248, 243, 234, 0.1) 45%, rgba(30, 26, 23, 0.35) 100%)',
             }}
           />
 
-          {/* Memory Tag & Play Pill */}
+          {/* Featured Memory Tag (Olive Accent) */}
           <div
             style={{
               position: 'absolute',
@@ -84,16 +84,15 @@ export const PhotosApp: React.FC = () => {
               display: 'flex',
               alignItems: 'center',
               gap: '6px',
-              padding: '4px 10px',
+              padding: '4px 12px',
               borderRadius: '20px',
-              background: 'rgba(0, 0, 0, 0.4)',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(255, 255, 255, 0.15)',
+              background: 'var(--olive)',
               fontSize: '0.7rem',
-              color: 'var(--color-champagne-gold)',
+              color: 'var(--bg-primary)',
               fontWeight: 600,
               letterSpacing: '0.1em',
               textTransform: 'uppercase',
+              boxShadow: '0 2px 8px rgba(111, 119, 95, 0.3)',
             }}
           >
             <Sparkles size={12} />
@@ -116,32 +115,33 @@ export const PhotosApp: React.FC = () => {
                 style={{
                   fontFamily: 'var(--font-display)',
                   fontSize: '1.45rem',
-                  color: 'var(--color-warm-ivory)',
+                  color: '#FFFFFF',
                   margin: '0 0 2px 0',
                   lineHeight: 1.1,
+                  textShadow: '0 2px 10px rgba(0, 0, 0, 0.35)',
                 }}
               >
                 {weddingConfig.couple.brideName} &amp; {weddingConfig.couple.groomName}
               </p>
-              <p style={{ margin: 0, fontSize: '0.8rem', color: 'var(--color-secondary-cream)' }}>
+              <p style={{ margin: 0, fontSize: '0.8rem', color: 'var(--color-secondary-cream)', textShadow: '0 1px 4px rgba(0, 0, 0, 0.3)' }}>
                 4 Years Together · Tap to Play Story
               </p>
             </div>
 
             <div
               style={{
-                width: '40px',
-                height: '40px',
+                width: '42px',
+                height: '42px',
                 borderRadius: '50%',
-                background: 'var(--color-champagne-gold)',
-                color: '#171613',
+                background: 'var(--gold)',
+                color: 'var(--bg-primary)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                boxShadow: '0 4px 12px rgba(198, 165, 107, 0.4)',
+                boxShadow: '0 4px 12px rgba(184, 146, 83, 0.4)',
               }}
             >
-              <Play size={18} fill="#171613" style={{ marginLeft: '2px' }} />
+              <Play size={18} fill="var(--bg-primary)" style={{ marginLeft: '2px' }} />
             </div>
           </div>
         </motion.div>
@@ -165,14 +165,15 @@ export const PhotosApp: React.FC = () => {
                 type="button"
                 onClick={() => setSelectedCategory(cat)}
                 style={{
-                  padding: '6px 14px',
+                  padding: '7px 16px',
                   borderRadius: '20px',
-                  background: isActive ? 'var(--color-champagne-gold)' : 'rgba(255, 255, 255, 0.08)',
-                  color: isActive ? '#171613' : 'var(--color-warm-ivory)',
+                  background: isActive ? 'var(--sage)' : 'var(--bg-secondary)',
+                  color: isActive ? 'var(--bg-primary)' : 'var(--text-primary)',
                   fontSize: '0.78rem',
                   fontWeight: isActive ? 700 : 500,
                   whiteSpace: 'nowrap',
-                  border: isActive ? '1px solid var(--color-champagne-gold)' : '1px solid rgba(255, 255, 255, 0.1)',
+                  border: isActive ? 'none' : '1px solid var(--border-gold)',
+                  boxShadow: isActive ? '0 2px 8px rgba(138, 148, 122, 0.3)' : 'var(--shadow-subtle)',
                   transition: 'all 0.2s ease',
                 }}
               >
@@ -182,7 +183,7 @@ export const PhotosApp: React.FC = () => {
           })}
         </div>
 
-        {/* Photo Gallery Grid */}
+        {/* Photo Gallery Grid (Stationery Cards with subtle bottom cream gradient) */}
         <div
           style={{
             display: 'grid',
@@ -201,12 +202,13 @@ export const PhotosApp: React.FC = () => {
                 onClick={() => setActivePhoto(photo)}
                 style={{
                   position: 'relative',
-                  borderRadius: '18px',
+                  borderRadius: '20px',
                   overflow: 'hidden',
                   aspectRatio: pIdx % 3 === 0 ? '3/4' : '1/1',
                   cursor: 'pointer',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                  background: '#201b15',
+                  border: '1px solid var(--border-gold)',
+                  background: 'var(--bg-secondary)',
+                  boxShadow: 'var(--shadow-soft)',
                 }}
               >
                 <img
@@ -223,24 +225,24 @@ export const PhotosApp: React.FC = () => {
                   style={{
                     position: 'absolute',
                     inset: 0,
-                    background: 'linear-gradient(to top, rgba(18, 16, 13, 0.8) 0%, transparent 60%)',
+                    background: 'linear-gradient(to top, rgba(248, 243, 234, 0.95) 0%, rgba(248, 243, 234, 0.55) 35%, transparent 75%)',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'flex-end',
-                    padding: '10px',
+                    padding: '12px',
                   }}
                 >
                   <span
                     style={{
-                      fontSize: '0.75rem',
+                      fontSize: '0.8rem',
                       fontWeight: 600,
-                      color: 'var(--color-warm-ivory)',
+                      color: 'var(--text-primary)',
                       lineHeight: 1.2,
                     }}
                   >
                     {photo.title}
                   </span>
-                  <span style={{ fontSize: '0.65rem', color: 'var(--color-champagne-gold)' }}>
+                  <span style={{ fontSize: '0.68rem', color: 'var(--gold)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                     {photo.category}
                   </span>
                 </div>
@@ -261,9 +263,9 @@ export const PhotosApp: React.FC = () => {
               position: 'absolute',
               inset: 0,
               zIndex: 100,
-              backgroundColor: '#171613',
-              backdropFilter: isSafe ? 'none' : 'blur(20px)',
-              WebkitBackdropFilter: isSafe ? 'none' : 'blur(20px)',
+              backgroundColor: 'rgba(30, 26, 23, 0.85)',
+              backdropFilter: isSafe ? 'none' : 'blur(16px)',
+              WebkitBackdropFilter: isSafe ? 'none' : 'blur(16px)',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
@@ -283,11 +285,12 @@ export const PhotosApp: React.FC = () => {
                 width: '40px',
                 height: '40px',
                 borderRadius: '50%',
-                background: 'rgba(255, 255, 255, 0.15)',
-                color: '#fff',
+                background: 'rgba(248, 243, 234, 0.9)',
+                color: 'var(--text-primary)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                boxShadow: 'var(--shadow-card)',
               }}
             >
               <X size={20} />
@@ -301,11 +304,11 @@ export const PhotosApp: React.FC = () => {
               style={{
                 width: '100%',
                 maxWidth: '420px',
-                borderRadius: '24px',
+                borderRadius: '26px',
                 overflow: 'hidden',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-                boxShadow: '0 25px 60px rgba(0, 0, 0, 0.7)',
-                background: '#171613',
+                border: '1px solid var(--border-gold)',
+                boxShadow: '0 25px 60px rgba(30, 26, 23, 0.4)',
+                background: 'var(--bg-primary)',
               }}
             >
               <img
@@ -323,14 +326,14 @@ export const PhotosApp: React.FC = () => {
                   style={{
                     fontFamily: 'var(--font-display)',
                     fontSize: '1.3rem',
-                    color: 'var(--color-warm-ivory)',
+                    color: 'var(--text-primary)',
                     margin: '0 0 4px 0',
                   }}
                 >
                   {activePhoto.title}
                 </p>
                 {activePhoto.caption && (
-                  <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--color-secondary-cream)', lineHeight: 1.4 }}>
+                  <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.45 }}>
                     {activePhoto.caption}
                   </p>
                 )}
@@ -339,9 +342,10 @@ export const PhotosApp: React.FC = () => {
                     display: 'inline-block',
                     marginTop: '8px',
                     fontSize: '0.72rem',
-                    color: 'var(--color-champagne-gold)',
+                    color: 'var(--gold)',
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',
+                    fontWeight: 600,
                   }}
                 >
                   {activePhoto.category}
@@ -363,7 +367,7 @@ export const PhotosApp: React.FC = () => {
               position: 'absolute',
               inset: 0,
               zIndex: 110,
-              backgroundColor: '#171613',
+              backgroundColor: '#1E1A17',
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'space-between',
@@ -389,7 +393,7 @@ export const PhotosApp: React.FC = () => {
                     flex: 1,
                     height: '3px',
                     borderRadius: '2px',
-                    background: i <= storyIndex ? 'var(--color-champagne-gold)' : 'rgba(255, 255, 255, 0.25)',
+                    background: i <= storyIndex ? 'var(--gold)' : 'rgba(255, 255, 255, 0.25)',
                     transition: 'background 0.3s ease',
                   }}
                 />
@@ -415,13 +419,13 @@ export const PhotosApp: React.FC = () => {
                     margin: 0,
                     fontSize: '0.85rem',
                     fontWeight: 700,
-                    color: 'var(--color-warm-ivory)',
+                    color: '#FFFFFF',
                     fontFamily: 'var(--font-display)',
                   }}
                 >
                   {weddingConfig.couple.brideName} &amp; {weddingConfig.couple.groomName}
                 </p>
-                <p style={{ margin: 0, fontSize: '0.68rem', color: 'var(--color-champagne-gold)' }}>
+                <p style={{ margin: 0, fontSize: '0.68rem', color: 'var(--gold)' }}>
                   {storyIndex + 1} of {allPhotos.length}
                 </p>
               </div>
@@ -434,11 +438,13 @@ export const PhotosApp: React.FC = () => {
                   width: '36px',
                   height: '36px',
                   borderRadius: '50%',
-                  background: 'rgba(0, 0, 0, 0.5)',
-                  color: '#fff',
+                  background: 'rgba(30, 26, 23, 0.55)',
+                  border: '1px solid rgba(184, 146, 83, 0.4)',
+                  color: '#F8F3EA',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
+                  cursor: 'pointer',
                 }}
               >
                 <X size={18} />
@@ -460,7 +466,7 @@ export const PhotosApp: React.FC = () => {
                 style={{
                   position: 'absolute',
                   inset: 0,
-                  background: 'linear-gradient(to top, rgba(18, 16, 13, 0.8) 0%, transparent 40%, rgba(18, 16, 13, 0.4) 100%)',
+                  background: 'linear-gradient(to top, rgba(30, 26, 23, 0.85) 0%, transparent 40%, rgba(30, 26, 23, 0.4) 100%)',
                 }}
               />
 
@@ -505,7 +511,7 @@ export const PhotosApp: React.FC = () => {
                   style={{
                     fontFamily: 'var(--font-display)',
                     fontSize: '1.5rem',
-                    color: 'var(--color-warm-ivory)',
+                    color: '#FFFFFF',
                     margin: '0 0 6px 0',
                   }}
                 >
@@ -529,7 +535,7 @@ export const PhotosApp: React.FC = () => {
                     type="button"
                     onClick={handleNextStory}
                     aria-label="Next story photo"
-                    style={{ color: 'var(--color-champagne-gold)' }}
+                    style={{ color: 'var(--gold)' }}
                   >
                     <ChevronRight size={24} />
                   </button>

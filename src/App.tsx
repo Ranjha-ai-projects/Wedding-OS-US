@@ -74,12 +74,12 @@ const MainOSContent: React.FC = () => {
           {/* GPU-accelerated backdrop dimmer */}
           <motion.div
             initial={false}
-            animate={{ opacity: activeApp ? (isSafe ? 0.48 : 0.42) : 0 }}
+            animate={{ opacity: activeApp ? (isSafe ? 0.35 : 0.28) : 0 }}
             transition={{ duration: isSafe ? 0.25 : 0.35, ease: [0.16, 1, 0.3, 1] }}
             style={{
               position: 'absolute',
               inset: 0,
-              backgroundColor: '#000000',
+              backgroundColor: '#1E1A17',
               pointerEvents: activeApp ? 'auto' : 'none',
               zIndex: 15,
             }}
@@ -127,7 +127,7 @@ const MainOSContent: React.FC = () => {
                 position: 'absolute',
                 inset: 0,
                 zIndex: 40,
-                backgroundColor: '#171613',
+                backgroundColor: '#F8F3EA',
                 transform: 'translateZ(0)',
                 WebkitBackfaceVisibility: 'hidden',
                 backfaceVisibility: 'hidden',
@@ -154,7 +154,7 @@ const MainOSContent: React.FC = () => {
                 position: 'absolute',
                 inset: 0,
                 zIndex: 50,
-                backgroundColor: '#171613',
+                backgroundColor: '#F8F3EA',
                 transform: 'translateZ(0)',
                 WebkitBackfaceVisibility: 'hidden',
                 backfaceVisibility: 'hidden',

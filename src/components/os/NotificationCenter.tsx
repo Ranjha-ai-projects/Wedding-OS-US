@@ -45,14 +45,14 @@ export const NotificationCenter: React.FC = () => {
             position: 'absolute',
             inset: 0,
             zIndex: 150,
-            backgroundColor: isSafe ? 'rgba(18, 16, 13, 0.98)' : 'rgba(18, 16, 13, 0.94)',
-            backdropFilter: isSafe ? 'none' : 'blur(30px) saturate(130%)',
-            WebkitBackdropFilter: isSafe ? 'none' : 'blur(30px) saturate(130%)',
+            backgroundColor: isSafe ? 'var(--bg-primary)' : 'rgba(248, 243, 234, 0.96)',
+            backdropFilter: isSafe ? 'none' : 'blur(25px) saturate(120%)',
+            WebkitBackdropFilter: isSafe ? 'none' : 'blur(25px) saturate(120%)',
             display: 'flex',
             flexDirection: 'column',
             paddingTop: 'max(1.5rem, env(safe-area-inset-top))',
             paddingBottom: 'max(1rem, env(safe-area-inset-bottom))',
-            color: 'var(--color-warm-ivory)',
+            color: 'var(--text-primary)',
           }}
           drag="y"
           dragConstraints={{ top: -200, bottom: 0 }}
@@ -69,8 +69,8 @@ export const NotificationCenter: React.FC = () => {
                 margin: '0 0 2px 0',
                 fontSize: '0.8rem',
                 textTransform: 'uppercase',
-                letterSpacing: '0.12em',
-                color: 'var(--color-champagne-gold)',
+                letterSpacing: '0.14em',
+                color: 'var(--gold)',
                 fontWeight: 600,
               }}
             >
@@ -80,10 +80,10 @@ export const NotificationCenter: React.FC = () => {
             <h2
               style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: '2.4rem',
-                margin: '0 0 4px 0',
+                fontSize: '2.6rem',
+                margin: '0 0 2px 0',
                 lineHeight: 1,
-                color: 'var(--color-warm-ivory)',
+                color: 'var(--text-primary)',
                 fontWeight: 400,
               }}
             >
@@ -96,7 +96,7 @@ export const NotificationCenter: React.FC = () => {
                 fontSize: '0.72rem',
                 letterSpacing: '0.22em',
                 textTransform: 'uppercase',
-                color: 'var(--color-soft-gray)',
+                color: 'var(--text-muted)',
                 fontWeight: 600,
               }}
             >
@@ -111,17 +111,17 @@ export const NotificationCenter: React.FC = () => {
               alignItems: 'center',
               justifyContent: 'space-between',
               padding: '0.5rem 1.5rem',
-              borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+              borderBottom: '1px solid rgba(184, 146, 83, 0.25)',
               marginBottom: '1rem',
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <Bell size={13} color="var(--color-champagne-gold)" />
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+              <Bell size={13} color="var(--gold)" />
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-primary)' }}>
                 Notifications
               </span>
             </div>
-            <span style={{ fontSize: '0.7rem', color: 'var(--color-soft-gray)' }}>
+            <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>
               {notificationHistory.length} total
             </span>
           </div>
@@ -139,7 +139,7 @@ export const NotificationCenter: React.FC = () => {
             }}
           >
             {notificationHistory.length === 0 ? (
-              <div style={{ textAlign: 'center', padding: '3rem 1rem', color: 'var(--color-soft-gray)' }}>
+              <div style={{ textAlign: 'center', padding: '3rem 1rem', color: 'var(--text-muted)' }}>
                 <p style={{ fontSize: '0.85rem' }}>No new notifications</p>
               </div>
             ) : (
@@ -155,9 +155,9 @@ export const NotificationCenter: React.FC = () => {
                   style={{
                     padding: '12px 14px',
                     borderRadius: '20px',
-                    background: 'rgba(26, 23, 19, 0.75)',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
-                    boxShadow: '0 6px 20px rgba(0, 0, 0, 0.35)',
+                    background: 'var(--bg-secondary)',
+                    border: '1px solid var(--border-gold)',
+                    boxShadow: 'var(--shadow-soft)',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '12px',
@@ -169,8 +169,8 @@ export const NotificationCenter: React.FC = () => {
                       width: '36px',
                       height: '36px',
                       borderRadius: '50%',
-                      background: 'rgba(198, 165, 107, 0.15)',
-                      border: '1px solid rgba(198, 165, 107, 0.35)',
+                      background: 'rgba(248, 243, 234, 0.9)',
+                      border: '1px solid var(--border-gold)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -182,14 +182,14 @@ export const NotificationCenter: React.FC = () => {
 
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '2px' }}>
-                      <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--color-champagne-gold)' }}>
+                      <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--gold)' }}>
                         {item.sender}
                       </span>
-                      <span style={{ fontSize: '0.68rem', color: 'var(--color-soft-gray)' }}>
+                      <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>
                         {item.time}
                       </span>
                     </div>
-                    <p style={{ margin: 0, fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.9)', lineHeight: 1.35 }}>
+                    <p style={{ margin: 0, fontSize: '0.82rem', color: 'var(--text-primary)', lineHeight: 1.35, fontWeight: 500 }}>
                       {item.text}
                     </p>
                   </div>
@@ -209,8 +209,8 @@ export const NotificationCenter: React.FC = () => {
               cursor: 'pointer',
             }}
           >
-            <ChevronUp size={20} color="var(--color-champagne-gold)" />
-            <span style={{ fontSize: '0.72rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-soft-gray)' }}>
+            <ChevronUp size={20} color="var(--gold)" />
+            <span style={{ fontSize: '0.72rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
               Swipe up to close
             </span>
           </div>

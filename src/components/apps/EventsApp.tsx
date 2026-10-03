@@ -81,18 +81,19 @@ export const EventsApp: React.FC = () => {
     <AppShell title="Events" subtitle={`${couple.brideName} & ${couple.groomName}`}>
       <div style={{ padding: '0.8rem 1.25rem 3.5rem 1.25rem' }}>
         {/* Subheading */}
-        <div style={{ textAlign: 'center', marginBottom: '1.25rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
           <p
             style={{
               fontFamily: 'var(--font-display)',
-              fontSize: '1.35rem',
-              color: 'var(--color-warm-ivory)',
-              margin: '0 0 2px 0',
+              fontSize: '1.4rem',
+              color: 'var(--text-primary)',
+              margin: '0 0 4px 0',
+              fontWeight: 400,
             }}
           >
             Let’s make it unforgettable.
           </p>
-          <p style={{ margin: 0, fontSize: '0.78rem', color: 'var(--color-champagne-gold)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>
+          <p style={{ margin: 0, fontSize: '0.76rem', color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '0.14em', fontWeight: 600 }}>
             {couple.displayDate}
           </p>
         </div>
@@ -102,12 +103,11 @@ export const EventsApp: React.FC = () => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           style={{
-            padding: '1.2rem 1.2rem 1.4rem 1.2rem',
+            padding: '1.25rem 1.25rem 1.35rem 1.25rem',
             borderRadius: '24px',
-            background: 'rgba(26, 23, 19, 0.75)',
-            backdropFilter: 'blur(20px)',
-            border: '1px solid rgba(255, 255, 255, 0.14)',
-            boxShadow: '0 12px 30px rgba(0, 0, 0, 0.35)',
+            background: 'var(--bg-secondary)',
+            border: '1px solid var(--border-gold)',
+            boxShadow: 'var(--shadow-card)',
             marginBottom: '1.75rem',
           }}
         >
@@ -115,8 +115,9 @@ export const EventsApp: React.FC = () => {
             <span
               style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: '1.15rem',
-                color: 'var(--color-warm-ivory)',
+                fontSize: '1.2rem',
+                color: 'var(--text-primary)',
+                fontWeight: 500,
               }}
             >
               {monthName} {year}
@@ -125,7 +126,7 @@ export const EventsApp: React.FC = () => {
               style={{
                 fontSize: '0.72rem',
                 letterSpacing: '0.14em',
-                color: 'var(--color-champagne-gold)',
+                color: 'var(--gold)',
                 textTransform: 'uppercase',
                 fontWeight: 600,
               }}
@@ -135,9 +136,9 @@ export const EventsApp: React.FC = () => {
           </div>
 
           {/* Weekday headers */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', textAlign: 'center', marginBottom: '6px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', textAlign: 'center', marginBottom: '8px' }}>
             {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((wd, i) => (
-              <span key={i} style={{ fontSize: '0.68rem', color: 'var(--color-soft-gray)', fontWeight: 600 }}>
+              <span key={i} style={{ fontSize: '0.68rem', color: 'var(--text-muted)', fontWeight: 600 }}>
                 {wd}
               </span>
             ))}
@@ -165,29 +166,30 @@ export const EventsApp: React.FC = () => {
                 >
                   {isWeddingDay ? (
                     <motion.div
-                      animate={{ scale: [1, 1.08, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                      animate={{ scale: [1, 1.06, 1] }}
+                      transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
                       style={{
                         width: '30px',
                         height: '30px',
                         borderRadius: '50%',
-                        background: 'linear-gradient(135deg, #c6a56b 0%, #a88752 100%)',
-                        color: '#171613',
-                        fontWeight: 800,
-                        fontSize: '0.8rem',
+                        background: 'var(--gold)',
+                        color: 'var(--bg-primary)',
+                        fontWeight: 700,
+                        fontSize: '0.82rem',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        boxShadow: '0 0 14px rgba(198, 165, 107, 0.6)',
+                        boxShadow: '0 4px 12px rgba(184, 146, 83, 0.4)',
                       }}
                     >
-                      25
+                      {day}
                     </motion.div>
                   ) : (
                     <span
                       style={{
                         fontSize: '0.78rem',
-                        color: 'rgba(255, 255, 255, 0.75)',
+                        color: 'var(--text-primary)',
+                        fontWeight: 500,
                       }}
                     >
                       {day}
@@ -203,7 +205,7 @@ export const EventsApp: React.FC = () => {
             style={{
               marginTop: '1.25rem',
               paddingTop: '1rem',
-              borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+              borderTop: '1px solid rgba(184, 146, 83, 0.25)',
               display: 'flex',
               gap: '8px',
             }}
@@ -211,7 +213,7 @@ export const EventsApp: React.FC = () => {
             <button
               type="button"
               onClick={handleDownloadICS}
-              className="btn-luxury btn-luxury-glass"
+              className="btn-luxury"
               style={{
                 flex: 1,
                 fontSize: '0.74rem',
@@ -219,9 +221,12 @@ export const EventsApp: React.FC = () => {
                 padding: '0.65rem 0.5rem',
                 minHeight: '40px',
                 borderRadius: '14px',
+                background: 'rgba(248, 243, 234, 0.9)',
+                border: '1px solid var(--border-gold)',
+                color: 'var(--text-primary)',
               }}
             >
-              <Download size={14} color="var(--color-champagne-gold)" />
+              <Download size={14} color="var(--gold)" />
               <span>{downloaded ? 'Saved! ✓' : 'Apple / iCal'}</span>
             </button>
 
@@ -229,7 +234,7 @@ export const EventsApp: React.FC = () => {
               href={googleCalUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-luxury btn-luxury-glass"
+              className="btn-luxury"
               style={{
                 flex: 1,
                 fontSize: '0.74rem',
@@ -238,9 +243,12 @@ export const EventsApp: React.FC = () => {
                 minHeight: '40px',
                 borderRadius: '14px',
                 textDecoration: 'none',
+                background: 'rgba(248, 243, 234, 0.9)',
+                border: '1px solid var(--border-gold)',
+                color: 'var(--text-primary)',
               }}
             >
-              <ExternalLink size={14} color="var(--color-champagne-gold)" />
+              <ExternalLink size={14} color="var(--gold)" />
               <span>Google Cal</span>
             </a>
           </div>
@@ -257,11 +265,10 @@ export const EventsApp: React.FC = () => {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 style={{
                   borderRadius: '24px',
-                  background: 'rgba(26, 23, 19, 0.72)',
-                  backdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(255, 255, 255, 0.14)',
+                  background: 'var(--bg-secondary)',
+                  border: '1px solid var(--border-gold)',
                   overflow: 'hidden',
-                  boxShadow: '0 10px 25px rgba(0, 0, 0, 0.35)',
+                  boxShadow: 'var(--shadow-card)',
                 }}
               >
                 {/* Event Image */}
@@ -280,7 +287,7 @@ export const EventsApp: React.FC = () => {
                     style={{
                       position: 'absolute',
                       inset: 0,
-                      background: 'linear-gradient(to top, rgba(26, 23, 19, 0.95) 0%, transparent 60%)',
+                      background: 'linear-gradient(to top, rgba(242, 234, 223, 0.95) 0%, transparent 60%)',
                     }}
                   />
 
@@ -292,12 +299,11 @@ export const EventsApp: React.FC = () => {
                       left: '14px',
                       padding: '4px 12px',
                       borderRadius: '16px',
-                      background: 'rgba(18, 16, 13, 0.75)',
-                      backdropFilter: 'blur(10px)',
-                      border: '1px solid rgba(198, 165, 107, 0.4)',
+                      background: 'rgba(248, 243, 234, 0.92)',
+                      border: '1px solid var(--border-gold)',
                       fontSize: '0.74rem',
                       fontWeight: 700,
-                      color: 'var(--color-champagne-gold)',
+                      color: 'var(--gold)',
                       letterSpacing: '0.04em',
                     }}
                   >
@@ -311,24 +317,24 @@ export const EventsApp: React.FC = () => {
                     style={{
                       fontFamily: 'var(--font-display)',
                       fontSize: '1.35rem',
-                      color: 'var(--color-warm-ivory)',
+                      color: 'var(--text-primary)',
                       margin: '0 0 4px 0',
                     }}
                   >
                     {evt.title}
                   </h3>
 
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--color-champagne-gold)', fontSize: '0.82rem', marginBottom: '8px' }}>
-                    <MapPin size={14} />
-                    <span style={{ fontWeight: 600 }}>{evt.venue}</span>
-                    <span style={{ color: 'rgba(255, 255, 255, 0.3)' }}>•</span>
-                    <span style={{ color: 'var(--color-soft-gray)' }}>{evt.city}</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--gold)', fontSize: '0.82rem', marginBottom: '8px' }}>
+                    <MapPin size={14} color="var(--sage)" />
+                    <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{evt.venue}</span>
+                    <span style={{ color: 'var(--text-muted)' }}>•</span>
+                    <span style={{ color: 'var(--text-secondary)' }}>{evt.city}</span>
                   </div>
 
                   <p
                     style={{
                       fontSize: '0.82rem',
-                      color: 'rgba(255, 255, 255, 0.8)',
+                      color: 'var(--text-secondary)',
                       lineHeight: 1.45,
                       margin: '0 0 1rem 0',
                     }}
@@ -341,17 +347,20 @@ export const EventsApp: React.FC = () => {
                       href={evt.googleMapsUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-luxury btn-luxury-glass"
+                      className="btn-luxury"
                       style={{
-                        padding: '0.55rem 1rem',
+                        padding: '0.55rem 1.1rem',
                         fontSize: '0.75rem',
                         letterSpacing: '0.06em',
                         borderRadius: '14px',
                         textDecoration: 'none',
                         minHeight: '38px',
+                        backgroundColor: 'var(--text-primary)',
+                        color: 'var(--bg-primary)',
+                        boxShadow: 'var(--shadow-soft)',
                       }}
                     >
-                      <MapPin size={14} color="var(--color-champagne-gold)" />
+                      <MapPin size={14} color="var(--sage)" />
                       <span>Directions</span>
                     </a>
                   </div>

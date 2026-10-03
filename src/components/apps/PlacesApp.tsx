@@ -14,11 +14,11 @@ export const PlacesApp: React.FC = () => {
 
   const getCategoryIcon = (category: string) => {
     switch (category) {
-      case 'Ceremony': return <MapPin size={14} color="var(--color-champagne-gold)" />;
-      case 'Reception': return <GlassWater size={14} color="var(--color-champagne-gold)" />;
-      case 'Hotel': return <Building size={14} color="var(--color-champagne-gold)" />;
-      case 'Airport': return <Plane size={14} color="var(--color-champagne-gold)" />;
-      default: return <MapPin size={14} color="var(--color-champagne-gold)" />;
+      case 'Ceremony': return <MapPin size={14} color="var(--sage)" />;
+      case 'Reception': return <GlassWater size={14} color="var(--sage)" />;
+      case 'Hotel': return <Building size={14} color="var(--sage)" />;
+      case 'Airport': return <Plane size={14} color="var(--sage)" />;
+      default: return <MapPin size={14} color="var(--sage)" />;
     }
   };
 
@@ -26,18 +26,19 @@ export const PlacesApp: React.FC = () => {
     <AppShell title="Places" subtitle="Venues & City Guide">
       <div style={{ padding: '0.8rem 1.25rem 3.5rem 1.25rem' }}>
         {/* Intro */}
-        <div style={{ textAlign: 'center', marginBottom: '1.25rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
           <p
             style={{
               fontFamily: 'var(--font-display)',
-              fontSize: '1.35rem',
-              color: 'var(--color-warm-ivory)',
-              margin: '0 0 2px 0',
+              fontSize: '1.4rem',
+              color: 'var(--text-primary)',
+              margin: '0 0 4px 0',
+              fontWeight: 400,
             }}
           >
             The City That Brought Us Together
           </p>
-          <p style={{ margin: 0, fontSize: '0.78rem', color: 'var(--color-champagne-gold)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>
+          <p style={{ margin: 0, fontSize: '0.76rem', color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '0.14em', fontWeight: 600 }}>
             New York, NY · October 2026
           </p>
         </div>
@@ -50,7 +51,7 @@ export const PlacesApp: React.FC = () => {
             gap: '8px',
             overflowX: 'auto',
             paddingBottom: '12px',
-            marginBottom: '1rem',
+            marginBottom: '1.25rem',
           }}
         >
           {filters.map((f) => {
@@ -63,13 +64,15 @@ export const PlacesApp: React.FC = () => {
                 style={{
                   padding: '6px 14px',
                   borderRadius: '20px',
-                  background: isActive ? 'var(--color-champagne-gold)' : 'rgba(255, 255, 255, 0.08)',
-                  color: isActive ? '#171613' : 'var(--color-warm-ivory)',
+                  background: isActive ? 'var(--sage)' : 'var(--bg-secondary)',
+                  color: isActive ? 'var(--bg-primary)' : 'var(--text-primary)',
                   fontSize: '0.78rem',
                   fontWeight: isActive ? 700 : 500,
                   whiteSpace: 'nowrap',
-                  border: isActive ? '1px solid var(--color-champagne-gold)' : '1px solid rgba(255, 255, 255, 0.1)',
+                  border: isActive ? '1px solid var(--sage)' : '1px solid var(--border-gold)',
+                  boxShadow: isActive ? '0 4px 12px rgba(138, 148, 122, 0.3)' : 'var(--shadow-soft)',
                   transition: 'all 0.2s ease',
+                  cursor: 'pointer',
                 }}
               >
                 {f}
@@ -89,11 +92,10 @@ export const PlacesApp: React.FC = () => {
                 transition={{ duration: 0.35, delay: index * 0.08 }}
                 style={{
                   borderRadius: '24px',
-                  background: 'rgba(26, 23, 19, 0.75)',
-                  backdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(255, 255, 255, 0.14)',
+                  background: 'var(--bg-secondary)',
+                  border: '1px solid var(--border-gold)',
                   overflow: 'hidden',
-                  boxShadow: '0 10px 25px rgba(0, 0, 0, 0.35)',
+                  boxShadow: 'var(--shadow-card)',
                 }}
               >
                 <div style={{ position: 'relative', height: '145px', width: '100%' }}>
@@ -111,7 +113,7 @@ export const PlacesApp: React.FC = () => {
                     style={{
                       position: 'absolute',
                       inset: 0,
-                      background: 'linear-gradient(to top, rgba(26, 23, 19, 0.95) 0%, transparent 60%)',
+                      background: 'linear-gradient(to top, rgba(242, 234, 223, 0.95) 0%, transparent 60%)',
                     }}
                   />
 
@@ -123,15 +125,14 @@ export const PlacesApp: React.FC = () => {
                       left: '14px',
                       padding: '4px 10px',
                       borderRadius: '16px',
-                      background: 'rgba(18, 16, 13, 0.8)',
-                      backdropFilter: 'blur(8px)',
-                      border: '1px solid rgba(198, 165, 107, 0.35)',
+                      background: 'rgba(248, 243, 234, 0.92)',
+                      border: '1px solid var(--border-gold)',
                       display: 'flex',
                       alignItems: 'center',
                       gap: '5px',
                       fontSize: '0.72rem',
                       fontWeight: 600,
-                      color: 'var(--color-warm-ivory)',
+                      color: 'var(--olive)',
                     }}
                   >
                     {getCategoryIcon(place.category)}
@@ -144,7 +145,7 @@ export const PlacesApp: React.FC = () => {
                     style={{
                       fontFamily: 'var(--font-display)',
                       fontSize: '1.35rem',
-                      color: 'var(--color-warm-ivory)',
+                      color: 'var(--text-primary)',
                       margin: '0 0 2px 0',
                     }}
                   >
@@ -155,7 +156,7 @@ export const PlacesApp: React.FC = () => {
                     style={{
                       fontSize: '0.8rem',
                       fontWeight: 600,
-                      color: 'var(--color-champagne-gold)',
+                      color: 'var(--gold)',
                       margin: '0 0 6px 0',
                     }}
                   >
@@ -165,15 +166,15 @@ export const PlacesApp: React.FC = () => {
                   <p
                     style={{
                       fontSize: '0.82rem',
-                      color: 'rgba(255, 255, 255, 0.75)',
+                      color: 'var(--text-secondary)',
                       margin: '0 0 6px 0',
                     }}
                   >
                     {place.address}
                   </p>
 
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '5px', color: 'var(--color-soft-gray)', fontSize: '0.75rem', marginBottom: '1rem' }}>
-                    <Clock size={13} color="var(--color-champagne-gold)" />
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '5px', color: 'var(--text-muted)', fontSize: '0.75rem', marginBottom: '1rem' }}>
+                    <Clock size={13} color="var(--gold)" />
                     <span>{place.distanceInfo}</span>
                   </div>
 
@@ -181,7 +182,7 @@ export const PlacesApp: React.FC = () => {
                     href={place.mapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-luxury btn-luxury-glass"
+                    className="btn-luxury"
                     style={{
                       display: 'inline-flex',
                       padding: '0.55rem 1.2rem',
@@ -190,9 +191,12 @@ export const PlacesApp: React.FC = () => {
                       borderRadius: '14px',
                       textDecoration: 'none',
                       minHeight: '38px',
+                      backgroundColor: 'var(--text-primary)',
+                      color: 'var(--bg-primary)',
+                      boxShadow: 'var(--shadow-soft)',
                     }}
                   >
-                    <Navigation size={14} color="var(--color-champagne-gold)" />
+                    <Navigation size={14} color="var(--sage)" />
                     <span>Directions in Maps</span>
                   </a>
                 </div>

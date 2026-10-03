@@ -23,14 +23,14 @@ export const RSVPApp: React.FC = () => {
   const [isTyping, setIsTyping] = useState<boolean>(false);
   const [songInput, setSongInput] = useState(rsvpData.songRequest || '');
 
-  // Champagne gold confetti burst
+  // Champagne gold + sage confetti burst
   const triggerChampagneConfetti = () => {
     try {
       confetti({
-        particleCount: 45,
+        particleCount: 50,
         spread: 60,
         origin: { y: 0.65 },
-        colors: ['#C6A56B', '#EFE8DC', '#F7F3EB', '#A88752'],
+        colors: ['#B89253', '#8A947A', '#F2EADF', '#6F775F', '#D4AF37'],
         ticks: 200,
         gravity: 1.1,
         scalar: 0.9,
@@ -115,9 +115,9 @@ export const RSVPApp: React.FC = () => {
                   gap: '6px',
                   padding: '4px 12px',
                   borderRadius: '20px',
-                  background: 'rgba(116, 123, 104, 0.25)',
-                  border: '1px solid #747B68',
-                  color: '#A7AD98',
+                  background: 'rgba(138, 148, 122, 0.18)',
+                  border: '1px solid var(--sage)',
+                  color: 'var(--olive)',
                   fontSize: '0.72rem',
                   fontWeight: 600,
                   letterSpacing: '0.1em',
@@ -125,20 +125,20 @@ export const RSVPApp: React.FC = () => {
                   marginBottom: '6px',
                 }}
               >
-                <CheckCircle size={13} />
+                <CheckCircle size={13} color="var(--sage)" />
                 <span>RSVP Confirmed</span>
               </div>
               <h2
                 style={{
                   fontFamily: 'var(--font-display)',
-                  fontSize: '1.8rem',
-                  color: 'var(--color-warm-ivory)',
+                  fontSize: '1.85rem',
+                  color: 'var(--text-primary)',
                   margin: '0 0 2px 0',
                 }}
               >
                 YOU’RE IN!
               </h2>
-              <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--color-secondary-cream)' }}>
+              <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
                 We can’t wait to celebrate with you, Sarah.
               </p>
             </div>
@@ -149,11 +149,11 @@ export const RSVPApp: React.FC = () => {
                 width: '100%',
                 maxWidth: '360px',
                 borderRadius: '24px',
-                background: 'linear-gradient(145deg, #f7f3eb 0%, #efe8dc 100%)',
-                color: '#171613',
+                background: 'var(--bg-secondary)',
+                color: 'var(--text-primary)',
                 padding: '1.75rem 1.5rem',
-                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5)',
-                border: '1px solid rgba(198, 165, 107, 0.45)',
+                boxShadow: 'var(--shadow-card)',
+                border: '1px solid var(--border-gold)',
                 position: 'relative',
                 overflow: 'hidden',
               }}
@@ -166,12 +166,12 @@ export const RSVPApp: React.FC = () => {
                     letterSpacing: '0.22em',
                     fontWeight: 700,
                     textTransform: 'uppercase',
-                    color: 'var(--color-deep-champagne)',
+                    color: 'var(--gold)',
                   }}
                 >
                   WEDDING PASS
                 </span>
-                <span style={{ fontSize: '0.68rem', color: '#777', fontWeight: 600 }}>
+                <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)', fontWeight: 600 }}>
                   {weddingConfig.guest.invitationCode}
                 </span>
               </div>
@@ -184,47 +184,48 @@ export const RSVPApp: React.FC = () => {
                   fontWeight: 400,
                   margin: '0 0 0.5rem 0',
                   lineHeight: 1.05,
+                  color: 'var(--text-primary)',
                 }}
               >
                 {weddingConfig.couple.brideName} &amp; {weddingConfig.couple.groomName}
               </h3>
 
-              <div style={{ height: '1px', background: 'rgba(0, 0, 0, 0.1)', margin: '1rem 0' }} />
+              <div style={{ height: '1px', background: 'rgba(184, 146, 83, 0.25)', margin: '1rem 0' }} />
 
               {/* Guest Details Grid */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '1.25rem' }}>
                 <div>
-                  <span style={{ display: 'block', fontSize: '0.68rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                  <span style={{ display: 'block', fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                     Guest
                   </span>
-                  <span style={{ fontSize: '0.95rem', fontWeight: 700, color: '#171613' }}>
+                  <span style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-primary)' }}>
                     {weddingConfig.guest.name} {rsvpData.plusOne ? '+ 1' : ''}
                   </span>
                 </div>
 
                 <div>
-                  <span style={{ display: 'block', fontSize: '0.68rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                  <span style={{ display: 'block', fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                     Seating
                   </span>
-                  <span style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--color-deep-champagne)' }}>
+                  <span style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--gold)' }}>
                     {weddingConfig.guest.assignedTable}
                   </span>
                 </div>
 
                 <div>
-                  <span style={{ display: 'block', fontSize: '0.68rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                  <span style={{ display: 'block', fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                     Date
                   </span>
-                  <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#171613' }}>
+                  <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-primary)' }}>
                     25 OCT 2026
                   </span>
                 </div>
 
                 <div>
-                  <span style={{ display: 'block', fontSize: '0.68rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                  <span style={{ display: 'block', fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                     Location
                   </span>
-                  <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#171613' }}>
+                  <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-primary)' }}>
                     The Glasshouse, NY
                   </span>
                 </div>
@@ -236,19 +237,21 @@ export const RSVPApp: React.FC = () => {
                   style={{
                     padding: '8px 12px',
                     borderRadius: '12px',
-                    background: 'rgba(0, 0, 0, 0.05)',
+                    background: 'rgba(248, 243, 234, 0.9)',
+                    border: '1px solid rgba(184, 146, 83, 0.25)',
                     fontSize: '0.75rem',
+                    color: 'var(--text-primary)',
                     marginBottom: '1.25rem',
                   }}
                 >
                   {rsvpData.dietary && (
                     <p style={{ margin: '0 0 2px 0' }}>
-                      <strong>Diet:</strong> {rsvpData.dietary}
+                      <strong style={{ color: 'var(--gold)' }}>Diet:</strong> {rsvpData.dietary}
                     </p>
                   )}
                   {rsvpData.songRequest && (
                     <p style={{ margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                      <strong>Song:</strong> “{rsvpData.songRequest}”
+                      <strong style={{ color: 'var(--gold)' }}>Song:</strong> “{rsvpData.songRequest}”
                     </p>
                   )}
                 </div>
@@ -264,9 +267,9 @@ export const RSVPApp: React.FC = () => {
                   margin: '1.25rem 0',
                 }}
               >
-                <div style={{ height: '1px', flex: 1, borderTop: '2px dashed rgba(0, 0, 0, 0.15)' }} />
-                <span style={{ fontSize: '0.68rem', color: '#888', letterSpacing: '0.1em' }}>SCAN AT ARRIVAL</span>
-                <div style={{ height: '1px', flex: 1, borderTop: '2px dashed rgba(0, 0, 0, 0.15)' }} />
+                <div style={{ height: '1px', flex: 1, borderTop: '2px dashed rgba(184, 146, 83, 0.35)' }} />
+                <span style={{ fontSize: '0.68rem', color: 'var(--gold)', letterSpacing: '0.12em', fontWeight: 600 }}>SCAN AT ARRIVAL</span>
+                <div style={{ height: '1px', flex: 1, borderTop: '2px dashed rgba(184, 146, 83, 0.35)' }} />
               </div>
 
               {/* QR Code Graphic */}
@@ -275,14 +278,15 @@ export const RSVPApp: React.FC = () => {
                   style={{
                     padding: '8px',
                     borderRadius: '12px',
-                    background: '#fff',
-                    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+                    background: '#F8F3EA',
+                    border: '1px solid var(--border-gold)',
+                    boxShadow: 'var(--shadow-soft)',
                   }}
                 >
-                  <QrCode size={64} color="#171613" />
+                  <QrCode size={64} color="#1E1A17" />
                 </div>
-                <div style={{ fontSize: '0.72rem', color: '#666', lineHeight: 1.4 }}>
-                  <p style={{ margin: '0 0 2px 0', fontWeight: 600, color: '#171613' }}>
+                <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', lineHeight: 1.4 }}>
+                  <p style={{ margin: '0 0 2px 0', fontWeight: 700, color: 'var(--text-primary)' }}>
                     Couple OS Verified
                   </p>
                   <p style={{ margin: 0 }}>
@@ -302,12 +306,15 @@ export const RSVPApp: React.FC = () => {
                 alignItems: 'center',
                 gap: '6px',
                 fontSize: '0.75rem',
-                color: 'var(--color-soft-gray)',
+                color: 'var(--text-muted)',
                 letterSpacing: '0.04em',
                 padding: '6px 12px',
+                background: 'transparent',
+                border: 'none',
+                cursor: 'pointer',
               }}
             >
-              <RotateCcw size={13} />
+              <RotateCcw size={13} color="var(--gold)" />
               <span>Modify RSVP Answers</span>
             </button>
           </motion.div>
@@ -320,28 +327,34 @@ export const RSVPApp: React.FC = () => {
               textAlign: 'center',
               padding: '2.5rem 1.5rem',
               borderRadius: '24px',
-              background: 'rgba(26, 23, 19, 0.75)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
+              background: 'var(--bg-secondary)',
+              border: '1px solid var(--border-gold)',
+              boxShadow: 'var(--shadow-card)',
             }}
           >
             <h3
               style={{
                 fontFamily: 'var(--font-display)',
                 fontSize: '1.5rem',
-                color: 'var(--color-warm-ivory)',
+                color: 'var(--text-primary)',
                 margin: '0 0 0.5rem 0',
               }}
             >
               We’ll Miss You, Sarah!
             </h3>
-            <p style={{ fontSize: '0.88rem', color: 'var(--color-secondary-cream)', lineHeight: 1.5, marginBottom: '1.5rem' }}>
+            <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: 1.5, marginBottom: '1.5rem' }}>
               We understand you can’t make it to New York. Thank you so much for celebrating our love from afar.
             </p>
             <button
               type="button"
               onClick={handleReset}
-              className="btn-luxury btn-luxury-glass"
-              style={{ fontSize: '0.8rem', padding: '0.7rem 1.25rem' }}
+              className="btn-luxury"
+              style={{
+                fontSize: '0.8rem',
+                padding: '0.7rem 1.25rem',
+                backgroundColor: 'var(--text-primary)',
+                color: 'var(--bg-primary)',
+              }}
             >
               Change Response
             </button>
@@ -356,12 +369,12 @@ export const RSVPApp: React.FC = () => {
                   width: '36px',
                   height: '36px',
                   borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #29251F 0%, #171613 100%)',
-                  border: '1px solid var(--color-champagne-gold)',
+                  background: '#E7DEC8',
+                  border: '1px solid var(--border-gold)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: 'var(--color-champagne-gold)',
+                  color: 'var(--gold)',
                   fontSize: '0.8rem',
                   fontWeight: 700,
                   flexShrink: 0,
@@ -371,7 +384,7 @@ export const RSVPApp: React.FC = () => {
               </div>
 
               <div style={{ flex: 1 }}>
-                <span style={{ fontSize: '0.72rem', color: 'var(--color-champagne-gold)', fontWeight: 600 }}>
+                <span style={{ fontSize: '0.72rem', color: 'var(--gold)', fontWeight: 600 }}>
                   Joshua
                 </span>
                 <div
@@ -379,10 +392,11 @@ export const RSVPApp: React.FC = () => {
                     marginTop: '4px',
                     padding: '12px 16px',
                     borderRadius: '18px 18px 18px 4px',
-                    background: 'rgba(38, 33, 27, 0.9)',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
+                    background: 'var(--surface-cream)',
+                    border: '1px solid var(--border-gold)',
+                    boxShadow: 'var(--shadow-soft)',
                     fontSize: '0.92rem',
-                    color: 'var(--color-warm-ivory)',
+                    color: 'var(--text-primary)',
                     lineHeight: 1.4,
                   }}
                 >
@@ -406,8 +420,15 @@ export const RSVPApp: React.FC = () => {
                   whileTap={{ scale: 0.95 }}
                   type="button"
                   onClick={() => handleAttendance(true)}
-                  className="btn-luxury btn-luxury-gold"
-                  style={{ flex: 1, padding: '0.8rem 1rem', fontSize: '0.84rem' }}
+                  className="btn-luxury"
+                  style={{
+                    flex: 1,
+                    padding: '0.8rem 1rem',
+                    fontSize: '0.84rem',
+                    backgroundColor: 'var(--sage)',
+                    color: 'var(--bg-primary)',
+                    boxShadow: 'var(--shadow-soft)',
+                  }}
                 >
                   Absolutely 🎉
                 </motion.button>
@@ -416,8 +437,15 @@ export const RSVPApp: React.FC = () => {
                   whileTap={{ scale: 0.95 }}
                   type="button"
                   onClick={() => handleAttendance(false)}
-                  className="btn-luxury btn-luxury-glass"
-                  style={{ flex: 1, padding: '0.8rem 1rem', fontSize: '0.84rem' }}
+                  className="btn-luxury"
+                  style={{
+                    flex: 1,
+                    padding: '0.8rem 1rem',
+                    fontSize: '0.84rem',
+                    backgroundColor: 'transparent',
+                    border: '1px solid var(--border-gold)',
+                    color: 'var(--text-primary)',
+                  }}
                 >
                   Sadly can’t
                 </motion.button>
@@ -436,11 +464,11 @@ export const RSVPApp: React.FC = () => {
                     width: '36px',
                     height: '36px',
                     borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #c6a56b 0%, #8c6d37 100%)',
+                    background: 'var(--sage)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#171613',
+                    color: '#F8F3EA',
                     fontSize: '0.8rem',
                     fontWeight: 700,
                     flexShrink: 0,
@@ -450,7 +478,7 @@ export const RSVPApp: React.FC = () => {
                 </div>
 
                 <div style={{ flex: 1 }}>
-                  <span style={{ fontSize: '0.72rem', color: 'var(--color-champagne-gold)', fontWeight: 600 }}>
+                  <span style={{ fontSize: '0.72rem', color: 'var(--gold)', fontWeight: 600 }}>
                     {weddingConfig.couple.brideName}
                   </span>
                   <div
@@ -458,10 +486,11 @@ export const RSVPApp: React.FC = () => {
                       marginTop: '4px',
                       padding: '12px 16px',
                       borderRadius: '18px 18px 18px 4px',
-                      background: 'linear-gradient(135deg, rgba(198, 165, 107, 0.35) 0%, rgba(168, 135, 82, 0.2) 100%)',
-                      border: '1px solid rgba(198, 165, 107, 0.45)',
+                      background: 'var(--bg-secondary)',
+                      border: '1px solid var(--border-gold)',
+                      boxShadow: 'var(--shadow-soft)',
                       fontSize: '0.92rem',
-                      color: 'var(--color-warm-ivory)',
+                      color: 'var(--text-primary)',
                       lineHeight: 1.4,
                     }}
                   >
@@ -486,8 +515,15 @@ export const RSVPApp: React.FC = () => {
                   whileTap={{ scale: 0.95 }}
                   type="button"
                   onClick={() => handlePlusOne(false)}
-                  className="btn-luxury btn-luxury-glass"
-                  style={{ flex: 1, padding: '0.8rem 1rem', fontSize: '0.84rem' }}
+                  className="btn-luxury"
+                  style={{
+                    flex: 1,
+                    padding: '0.8rem 1rem',
+                    fontSize: '0.84rem',
+                    backgroundColor: 'transparent',
+                    border: '1px solid var(--border-gold)',
+                    color: 'var(--text-primary)',
+                  }}
                 >
                   Just me
                 </motion.button>
@@ -496,8 +532,15 @@ export const RSVPApp: React.FC = () => {
                   whileTap={{ scale: 0.95 }}
                   type="button"
                   onClick={() => handlePlusOne(true)}
-                  className="btn-luxury btn-luxury-gold"
-                  style={{ flex: 1, padding: '0.8rem 1rem', fontSize: '0.84rem' }}
+                  className="btn-luxury"
+                  style={{
+                    flex: 1,
+                    padding: '0.8rem 1rem',
+                    fontSize: '0.84rem',
+                    backgroundColor: 'var(--sage)',
+                    color: 'var(--bg-primary)',
+                    boxShadow: 'var(--shadow-soft)',
+                  }}
                 >
                   Me + 1
                 </motion.button>
@@ -516,12 +559,12 @@ export const RSVPApp: React.FC = () => {
                     width: '36px',
                     height: '36px',
                     borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #29251F 0%, #171613 100%)',
-                    border: '1px solid var(--color-champagne-gold)',
+                    background: '#E7DEC8',
+                    border: '1px solid var(--border-gold)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: 'var(--color-champagne-gold)',
+                    color: 'var(--gold)',
                     fontSize: '0.8rem',
                     fontWeight: 700,
                     flexShrink: 0,
@@ -531,7 +574,7 @@ export const RSVPApp: React.FC = () => {
                 </div>
 
                 <div style={{ flex: 1 }}>
-                  <span style={{ fontSize: '0.72rem', color: 'var(--color-champagne-gold)', fontWeight: 600 }}>
+                  <span style={{ fontSize: '0.72rem', color: 'var(--gold)', fontWeight: 600 }}>
                     Joshua
                   </span>
                   <div
@@ -539,10 +582,11 @@ export const RSVPApp: React.FC = () => {
                       marginTop: '4px',
                       padding: '12px 16px',
                       borderRadius: '18px 18px 18px 4px',
-                      background: 'rgba(38, 33, 27, 0.9)',
-                      border: '1px solid rgba(255, 255, 255, 0.12)',
+                      background: 'var(--surface-cream)',
+                      border: '1px solid var(--border-gold)',
+                      boxShadow: 'var(--shadow-soft)',
                       fontSize: '0.92rem',
-                      color: 'var(--color-warm-ivory)',
+                      color: 'var(--text-primary)',
                       lineHeight: 1.4,
                     }}
                   >
@@ -569,8 +613,15 @@ export const RSVPApp: React.FC = () => {
                     whileTap={{ scale: 0.95 }}
                     type="button"
                     onClick={() => handleDietary(opt)}
-                    className="btn-luxury btn-luxury-glass"
-                    style={{ padding: '0.65rem 0.8rem', fontSize: '0.78rem', borderRadius: '14px' }}
+                    className="btn-luxury"
+                    style={{
+                      padding: '0.65rem 0.8rem',
+                      fontSize: '0.78rem',
+                      borderRadius: '14px',
+                      backgroundColor: 'var(--bg-secondary)',
+                      border: '1px solid var(--border-gold)',
+                      color: 'var(--text-primary)',
+                    }}
                   >
                     {opt}
                   </motion.button>
@@ -590,11 +641,11 @@ export const RSVPApp: React.FC = () => {
                     width: '36px',
                     height: '36px',
                     borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #c6a56b 0%, #8c6d37 100%)',
+                    background: 'var(--sage)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#171613',
+                    color: '#F8F3EA',
                     fontSize: '0.8rem',
                     fontWeight: 700,
                     flexShrink: 0,
@@ -604,7 +655,7 @@ export const RSVPApp: React.FC = () => {
                 </div>
 
                 <div style={{ flex: 1 }}>
-                  <span style={{ fontSize: '0.72rem', color: 'var(--color-champagne-gold)', fontWeight: 600 }}>
+                  <span style={{ fontSize: '0.72rem', color: 'var(--gold)', fontWeight: 600 }}>
                     {weddingConfig.couple.brideName}
                   </span>
                   <div
@@ -612,10 +663,11 @@ export const RSVPApp: React.FC = () => {
                       marginTop: '4px',
                       padding: '12px 16px',
                       borderRadius: '18px 18px 18px 4px',
-                      background: 'linear-gradient(135deg, rgba(198, 165, 107, 0.35) 0%, rgba(168, 135, 82, 0.2) 100%)',
-                      border: '1px solid rgba(198, 165, 107, 0.45)',
+                      background: 'var(--bg-secondary)',
+                      border: '1px solid var(--border-gold)',
+                      boxShadow: 'var(--shadow-soft)',
                       fontSize: '0.92rem',
-                      color: 'var(--color-warm-ivory)',
+                      color: 'var(--text-primary)',
                       lineHeight: 1.4,
                     }}
                   >
@@ -645,9 +697,9 @@ export const RSVPApp: React.FC = () => {
                     flex: 1,
                     padding: '0.75rem 1rem',
                     borderRadius: '16px',
-                    background: 'rgba(255, 255, 255, 0.08)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                    color: 'var(--color-warm-ivory)',
+                    background: 'var(--bg-secondary)',
+                    border: '1px solid var(--border-gold)',
+                    color: 'var(--text-primary)',
                     fontSize: '0.85rem',
                     outline: 'none',
                   }}
@@ -655,10 +707,15 @@ export const RSVPApp: React.FC = () => {
                 <motion.button
                   whileTap={{ scale: 0.95 }}
                   type="submit"
-                  className="btn-luxury btn-luxury-gold"
-                  style={{ padding: '0.75rem 1.25rem', borderRadius: '16px' }}
+                  className="btn-luxury"
+                  style={{
+                    padding: '0.75rem 1.25rem',
+                    borderRadius: '16px',
+                    backgroundColor: 'var(--text-primary)',
+                    color: 'var(--bg-primary)',
+                  }}
                 >
-                  <Send size={15} />
+                  <Send size={15} color="var(--bg-primary)" />
                 </motion.button>
               </motion.form>
             )}
@@ -674,14 +731,16 @@ export const RSVPApp: React.FC = () => {
                   gap: '4px',
                   padding: '8px 14px',
                   borderRadius: '16px',
-                  background: 'rgba(255, 255, 255, 0.1)',
+                  background: 'var(--surface-cream)',
+                  border: '1px solid var(--border-gold)',
+                  boxShadow: 'var(--shadow-soft)',
                   marginLeft: '46px',
                   width: 'fit-content',
                 }}
               >
-                <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--color-champagne-gold)', animation: 'softPulse 1s infinite' }} />
-                <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--color-champagne-gold)', animation: 'softPulse 1s infinite 0.2s' }} />
-                <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--color-champagne-gold)', animation: 'softPulse 1s infinite 0.4s' }} />
+                <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--gold)', animation: 'softPulse 1s infinite' }} />
+                <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--gold)', animation: 'softPulse 1s infinite 0.2s' }} />
+                <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--gold)', animation: 'softPulse 1s infinite 0.4s' }} />
               </motion.div>
             )}
           </div>

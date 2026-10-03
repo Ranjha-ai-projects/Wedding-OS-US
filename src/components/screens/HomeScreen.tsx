@@ -56,13 +56,13 @@ export const HomeScreen: React.FC = () => {
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
-        backgroundColor: '#171613',
+        backgroundColor: '#F8F3EA',
         transform: 'translateZ(0)',
         WebkitBackfaceVisibility: 'hidden',
         backfaceVisibility: 'hidden',
       }}
     >
-      {/* Background Couple Photography with Dark Warm Editorial Overlay */}
+      {/* Background Couple Photography */}
       <div
         style={{
           position: 'absolute',
@@ -74,25 +74,25 @@ export const HomeScreen: React.FC = () => {
         }}
       />
 
-      {/* Dark warm vignette and gradient overlay */}
+      {/* Luminous Warm Ivory & Champagne Soft Editorial Overlay */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
           background: `linear-gradient(
             to bottom,
-            rgba(18, 16, 13, 0.70) 0%,
-            rgba(18, 16, 13, 0.38) 30%,
-            rgba(18, 16, 13, 0.55) 60%,
-            rgba(18, 16, 13, 0.94) 100%
+            rgba(248, 243, 234, 0.45) 0%,
+            rgba(248, 243, 234, 0.18) 30%,
+            rgba(248, 243, 234, 0.52) 60%,
+            rgba(248, 243, 234, 0.96) 100%
           )`,
           pointerEvents: 'none',
         }}
       />
 
-      {/* Status Bar */}
+      {/* Status Bar (Dark text on warm luminous canvas) */}
       <div style={{ position: 'relative', zIndex: 10 }}>
-        <StatusBar variant="light" />
+        <StatusBar variant="dark" />
       </div>
 
       {/* Main Home Screen Scrollable Content */}
@@ -113,9 +113,9 @@ export const HomeScreen: React.FC = () => {
             <p
               style={{
                 fontFamily: 'var(--font-body)',
-                fontSize: '0.8rem',
-                color: 'var(--color-champagne-gold)',
-                letterSpacing: '0.04em',
+                fontSize: '0.78rem',
+                color: 'var(--gold)',
+                letterSpacing: '0.12em',
                 fontWeight: 600,
                 margin: '0 0 2px 0',
                 textTransform: 'uppercase',
@@ -126,8 +126,8 @@ export const HomeScreen: React.FC = () => {
             <h1
               style={{
                 fontFamily: 'var(--font-display)',
-                fontSize: '1.9rem',
-                color: 'var(--color-warm-ivory)',
+                fontSize: '1.95rem',
+                color: 'var(--text-primary)',
                 margin: '0 0 4px 0',
                 lineHeight: 1.05,
                 fontWeight: 400,
@@ -139,9 +139,10 @@ export const HomeScreen: React.FC = () => {
               style={{
                 fontSize: '0.74rem',
                 letterSpacing: '0.18em',
-                color: 'var(--color-soft-gray)',
+                color: 'var(--text-secondary)',
                 margin: 0,
                 textTransform: 'uppercase',
+                fontWeight: 500,
               }}
             >
               {weddingConfig.couple.shortDate} — {weddingConfig.couple.locationCity}
@@ -155,16 +156,17 @@ export const HomeScreen: React.FC = () => {
               onClick={openNotificationCenter}
               aria-label="Open Notification Center"
               style={{
-                width: '34px',
-                height: '34px',
+                width: '36px',
+                height: '36px',
                 borderRadius: '50%',
-                background: 'rgba(255, 255, 255, 0.1)',
+                background: 'rgba(248, 243, 234, 0.85)',
                 backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.15)',
+                border: '1px solid var(--border-gold)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: 'rgba(255, 255, 255, 0.85)',
+                color: 'var(--text-primary)',
+                boxShadow: 'var(--shadow-subtle)',
               }}
             >
               <Bell size={15} />
@@ -175,16 +177,17 @@ export const HomeScreen: React.FC = () => {
               onClick={lockPhone}
               aria-label="Lock Couple OS"
               style={{
-                width: '34px',
-                height: '34px',
+                width: '36px',
+                height: '36px',
                 borderRadius: '50%',
-                background: 'rgba(255, 255, 255, 0.1)',
+                background: 'rgba(248, 243, 234, 0.85)',
                 backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.15)',
+                border: '1px solid var(--border-gold)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: 'rgba(255, 255, 255, 0.85)',
+                color: 'var(--text-primary)',
+                boxShadow: 'var(--shadow-subtle)',
               }}
             >
               <Lock size={15} />
@@ -197,22 +200,23 @@ export const HomeScreen: React.FC = () => {
           style={{
             alignSelf: 'flex-start',
             marginTop: '0.85rem',
-            padding: '4px 10px',
+            padding: '5px 12px',
             borderRadius: '16px',
-            background: 'rgba(26, 23, 19, 0.55)',
+            background: 'rgba(248, 243, 234, 0.85)',
             backdropFilter: 'blur(12px)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
+            border: '1px solid var(--border-gold)',
+            boxShadow: 'var(--shadow-subtle)',
             display: 'flex',
             alignItems: 'center',
             gap: '6px',
-            fontSize: '0.7rem',
-            color: 'var(--color-secondary-cream)',
+            fontSize: '0.72rem',
+            color: 'var(--text-secondary)',
           }}
         >
-          <SunMedium size={12} color="var(--color-champagne-gold)" />
-          <span style={{ fontWeight: 500 }}>Oct 25 · 72°</span>
-          <span style={{ color: 'rgba(255, 255, 255, 0.3)' }}>•</span>
-          <span style={{ color: 'var(--color-champagne-gold)', fontStyle: 'italic' }}>100% chance of marriage</span>
+          <SunMedium size={13} color="var(--gold)" />
+          <span style={{ fontWeight: 600 }}>Oct 25 · 72°</span>
+          <span style={{ color: 'var(--text-muted)' }}>•</span>
+          <span style={{ color: 'var(--gold)', fontStyle: 'italic', fontWeight: 500 }}>100% chance of marriage</span>
         </div>
 
         {/* Large Glass Countdown Widget (State-aware for RSVP) */}
@@ -225,11 +229,11 @@ export const HomeScreen: React.FC = () => {
             marginBottom: '1.5rem',
             padding: '1.4rem 1.6rem',
             borderRadius: '26px',
-            background: isSafe ? 'rgba(26, 23, 19, 0.88)' : 'rgba(26, 23, 19, 0.58)',
-            backdropFilter: isSafe ? 'none' : 'blur(20px) saturate(125%)',
-            WebkitBackdropFilter: isSafe ? 'none' : 'blur(20px) saturate(125%)',
-            border: '1px solid rgba(255, 255, 255, 0.16)',
-            boxShadow: '0 16px 40px rgba(0, 0, 0, 0.35)',
+            background: isSafe ? 'rgba(242, 234, 223, 0.95)' : 'rgba(248, 243, 234, 0.88)',
+            backdropFilter: isSafe ? 'none' : 'blur(16px)',
+            WebkitBackdropFilter: isSafe ? 'none' : 'blur(16px)',
+            border: '1px solid var(--border-gold)',
+            boxShadow: 'var(--shadow-card)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -245,12 +249,12 @@ export const HomeScreen: React.FC = () => {
               bottom: '-25px',
               width: '140px',
               height: '140px',
-              opacity: 0.08,
+              opacity: 0.15,
               pointerEvents: 'none',
             }}
             viewBox="0 0 100 100"
             fill="none"
-            stroke="var(--color-champagne-gold)"
+            stroke="var(--sage)"
             strokeWidth="1.2"
           >
             <path d="M50 90 C 45 60, 20 40, 20 20 C 35 20, 48 35, 50 50 C 52 35, 65 20, 80 20 C 80 40, 55 60, 50 90 Z" />
@@ -260,13 +264,13 @@ export const HomeScreen: React.FC = () => {
           </svg>
 
           {/* Left: Large Bodoni Moda Countdown Number */}
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.4rem' }}>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.4rem', zIndex: 1 }}>
             <span
               style={{
                 fontFamily: 'var(--font-display)',
                 fontSize: 'clamp(3.8rem, 13vw, 4.8rem)',
                 fontWeight: 400,
-                color: 'var(--color-warm-ivory)',
+                color: 'var(--text-primary)',
                 lineHeight: 0.9,
                 letterSpacing: '-0.03em',
               }}
@@ -285,7 +289,7 @@ export const HomeScreen: React.FC = () => {
                     fontFamily: 'var(--font-body)',
                     fontSize: '0.72rem',
                     letterSpacing: '0.15em',
-                    color: '#A7AD98',
+                    color: 'var(--sage)',
                     textTransform: 'uppercase',
                     fontWeight: 700,
                     marginBottom: '4px',
@@ -298,7 +302,7 @@ export const HomeScreen: React.FC = () => {
                     fontFamily: 'var(--font-display)',
                     fontSize: '1.25rem',
                     fontStyle: 'italic',
-                    color: 'var(--color-warm-ivory)',
+                    color: 'var(--text-primary)',
                     lineHeight: 1.1,
                   }}
                 >
@@ -313,7 +317,7 @@ export const HomeScreen: React.FC = () => {
                     fontFamily: 'var(--font-body)',
                     fontSize: '0.72rem',
                     letterSpacing: '0.22em',
-                    color: 'var(--color-champagne-gold)',
+                    color: 'var(--gold)',
                     textTransform: 'uppercase',
                     fontWeight: 600,
                     marginBottom: '4px',
@@ -326,7 +330,7 @@ export const HomeScreen: React.FC = () => {
                     fontFamily: 'var(--font-display)',
                     fontSize: '1.6rem',
                     fontStyle: 'italic',
-                    color: 'var(--color-warm-ivory)',
+                    color: 'var(--text-primary)',
                     lineHeight: 1,
                   }}
                 >
@@ -374,22 +378,22 @@ export const HomeScreen: React.FC = () => {
                     maxWidth: '72px',
                   }}
                 >
-                  {/* Glass App Tile */}
+                  {/* Light Stationery Glass App Tile */}
                   <div
                     style={{
                       position: 'relative',
                       width: '62px',
                       height: '62px',
                       borderRadius: '18px',
-                      background: 'rgba(26, 23, 19, 0.65)',
-                      backdropFilter: 'blur(16px)',
-                      WebkitBackdropFilter: 'blur(16px)',
-                      border: '1px solid rgba(255, 255, 255, 0.18)',
-                      boxShadow: '0 8px 20px rgba(0, 0, 0, 0.35)',
+                      background: 'rgba(248, 243, 234, 0.82)',
+                      backdropFilter: 'blur(14px)',
+                      WebkitBackdropFilter: 'blur(14px)',
+                      border: '1px solid var(--border-gold)',
+                      boxShadow: 'var(--shadow-soft)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      color: isRSVP && !rsvpData.completed ? 'var(--color-champagne-gold)' : 'var(--color-warm-ivory)',
+                      color: isRSVP && !rsvpData.completed ? 'var(--gold)' : 'var(--olive)',
                       transition: 'all 0.2s ease',
                     }}
                   >
@@ -409,17 +413,17 @@ export const HomeScreen: React.FC = () => {
                         <motion.div
                           animate={{ height: ['3px', '8px', '3px'] }}
                           transition={{ repeat: Infinity, duration: 0.6 }}
-                          style={{ width: '2px', background: 'var(--color-champagne-gold)', borderRadius: '1px' }}
+                          style={{ width: '2px', background: 'var(--gold)', borderRadius: '1px' }}
                         />
                         <motion.div
                           animate={{ height: ['6px', '3px', '6px'] }}
                           transition={{ repeat: Infinity, duration: 0.5 }}
-                          style={{ width: '2px', background: 'var(--color-champagne-gold)', borderRadius: '1px' }}
+                          style={{ width: '2px', background: 'var(--gold)', borderRadius: '1px' }}
                         />
                         <motion.div
                           animate={{ height: ['4px', '9px', '4px'] }}
                           transition={{ repeat: Infinity, duration: 0.7 }}
-                          style={{ width: '2px', background: 'var(--color-champagne-gold)', borderRadius: '1px' }}
+                          style={{ width: '2px', background: 'var(--gold)', borderRadius: '1px' }}
                         />
                       </div>
                     )}
@@ -435,14 +439,14 @@ export const HomeScreen: React.FC = () => {
                           height: '18px',
                           padding: '0 5px',
                           borderRadius: '10px',
-                          background: 'linear-gradient(135deg, #c6a56b 0%, #a88752 100%)',
-                          color: '#171613',
+                          background: 'var(--gold)',
+                          color: 'var(--bg-primary)',
                           fontSize: '0.65rem',
                           fontWeight: 700,
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          boxShadow: '0 2px 6px rgba(0, 0, 0, 0.4)',
+                          boxShadow: '0 2px 6px rgba(66, 48, 25, 0.25)',
                         }}
                       >
                         {unreadCount}
@@ -459,12 +463,13 @@ export const HomeScreen: React.FC = () => {
                           width: '18px',
                           height: '18px',
                           borderRadius: '50%',
-                          background: '#747B68',
+                          background: 'var(--sage)',
                           color: '#ffffff',
                           fontSize: '0.65rem',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
+                          boxShadow: '0 2px 6px rgba(111, 119, 95, 0.25)',
                         }}
                       >
                         ✓
@@ -478,8 +483,8 @@ export const HomeScreen: React.FC = () => {
                       marginTop: '7px',
                       fontFamily: 'var(--font-body)',
                       fontSize: '0.75rem',
-                      fontWeight: 500,
-                      color: 'rgba(255, 255, 255, 0.9)',
+                      fontWeight: 600,
+                      color: 'var(--text-primary)',
                       letterSpacing: '0.01em',
                       textAlign: 'center',
                     }}
